@@ -1,0 +1,52 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="pbxGvuY6U9-MlB1Vebt5">
+    <mxGraphModel dx="989" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-1" value="Hardware" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="280" width="510" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-2" value="Betriebssystem" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="220" width="510" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-3" value="Java Laufzeitumgebung mit Standardbibliothek" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="160" width="510" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-4" value="Java Programm" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-5" value="Groovy&lt;div&gt;Programm&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-6" value="Kotlin&lt;div&gt;Programm&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-7" value="JRuby&lt;div&gt;Programm&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7EuYu-XtuoP3oZrTBjUW-9" target="7EuYu-XtuoP3oZrTBjUW-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-9" value="Java Quelltext&lt;div&gt;(.java Datei)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7EuYu-XtuoP3oZrTBjUW-10" target="7EuYu-XtuoP3oZrTBjUW-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-10" value="Java Compiler&lt;br&gt;(javac.exe)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7EuYu-XtuoP3oZrTBjUW-12" target="7EuYu-XtuoP3oZrTBjUW-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-12" value="Bytecode&lt;div&gt;(.class)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7EuYu-XtuoP3oZrTBjUW-14" value="Java Launcher&lt;div&gt;(java.exe)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
