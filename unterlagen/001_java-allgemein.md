@@ -19,3 +19,7 @@
   - Überwachung des gerade ausgeführten Programmes (z.B. Vermeidung von Pufferüberläufen, fehlende/knappe Ressourcen melden)
 - Java ist eine objektorientierte Programmiersprache, d.h. Programme werden als Netz miteinander interagierender Objekte modelliert bzw. kodiert. Das entspricht der menschlichen Denkweise, ist also sehr intuitiv.
 - Java besitzt eine einfache Syntax und ist "leicht" zu erlernen.
+- Es existieren unterschiedliche Java-Plattform-Varianten
+  - Java Standard Edition (Java SE): Für die Entwicklung von nicht-verteilten Anwendungen gedacht.
+  - Java Enterprise Edition (Java EE) (jetzt als Jakarta bezeichnet): Hauptsächlich für Unternehmenssoftware und verteilte Softwareanwendungen.
+  - Java Micro Edition (Java ME): eine abgespeckte Variante von Java SE mit einer ressourcenschonenden Laufzeitumgebung
