@@ -29,7 +29,7 @@ public class HelloWorld {
         boolean isAdult = false;
 
         char z = 'x'; // 16 Bits (Unicode Zeichensatz, UTF-16 Kodierung)
-        
+
 
 
 
