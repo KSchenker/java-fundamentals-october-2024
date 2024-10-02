@@ -1,0 +1,127 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="IZ2xjslxAg5YBPiTURhT">
+    <mxGraphModel dx="918" dy="690" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zSbv3vmIentXl1cRwi0s-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-1" target="zSbv3vmIentXl1cRwi0s-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-1" value="Eingabe des Jahres" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="449" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-2" target="zSbv3vmIentXl1cRwi0s-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-7" value="[ja]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zSbv3vmIentXl1cRwi0s-6">
+          <mxGeometry x="-0.1924" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="679.5238095238094" y="320.0238095238094" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-9" value="[nein]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zSbv3vmIentXl1cRwi0s-8">
+          <mxGeometry x="-0.3476" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-2" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="488.5" y="250" width="41" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="449.48571428571427" y="399.01428571428573" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-18" value="[else]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zSbv3vmIentXl1cRwi0s-17">
+          <mxGeometry x="-0.0474" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-19" value="[durch 100 teilbar]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-4" target="zSbv3vmIentXl1cRwi0s-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-4" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="319" y="320" width="41" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-10" target="zSbv3vmIentXl1cRwi0s-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="679.0000000000002" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="679" y="615" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-10" value="Ausgabe: &quot;Nein, kein Schaltjahr&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="619" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-13" target="zSbv3vmIentXl1cRwi0s-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-13" value="" style="ellipse;fillColor=strokeColor;html=1;" vertex="1" parent="1">
+          <mxGeometry x="494" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-27" value="[durch 400 teilbar]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-15" target="zSbv3vmIentXl1cRwi0s-33">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="109.51428571428573" y="459.01428571428573" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="289.5" y="459" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-29" value="[else]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="zSbv3vmIentXl1cRwi0s-28">
+          <mxGeometry x="-0.3276" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-15" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="189" y="399" width="41" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-20" value="Ist die Zahl durch 4 teilbar?" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=15;" vertex="1" parent="1">
+          <mxGeometry x="629" y="150" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-21" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-2" target="zSbv3vmIentXl1cRwi0s-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="569" y="250" as="sourcePoint" />
+            <mxPoint x="619" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-22" target="zSbv3vmIentXl1cRwi0s-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="449.0000000000002" y="490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="449" y="615" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-22" value="Ausgabe: &quot;Ja, ein Schaltjahr&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="389" y="399" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-30" target="zSbv3vmIentXl1cRwi0s-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-30" value="Ausgabe: &quot;Nein, kein Schaltjahr&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-31" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="1">
+          <mxGeometry x="275" y="600" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="zSbv3vmIentXl1cRwi0s-33" target="zSbv3vmIentXl1cRwi0s-31">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="119" y="615" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zSbv3vmIentXl1cRwi0s-33" value="Ausgabe: &quot;Ja, ein Schaltjahr&quot;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="59" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
