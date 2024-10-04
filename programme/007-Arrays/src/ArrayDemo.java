@@ -46,18 +46,43 @@ public class ArrayDemo {
         double[] revenues = {2321.3, 3, 1022, 1.2e-6};
         boolean[] flags = {true, false, true, true};
 
+        int[] sample = {2, 6, 1, 0, 4};
+        System.out.println(minIndex(sample)); // 3
+        System.out.println(average(sample)); // 2.6
+        System.out.println(isInAscendingOrder(sample)); // false
+        int[] sortedNumbers = {2, 2, 3, 6, 10, 11};
+        System.out.println(isInAscendingOrder(sortedNumbers)); // true
+
     }
 
     public static int minIndex(int[] numbers) {
         // Aufgabe: Finde die kleinste Zahl im Array numbers und gib ihren Index an den Aufrufer zurück.
+        int minIndex = 0;
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] < numbers[minIndex]) {
+                minIndex = i;
+            }
+        }
+        return minIndex;
     }
 
     public static double average(int[] numbers) {
         // Aufgabe: Berechne den Durchschnitt der Zahlen im Array numbers und gib ihn an den Aufrufer zurück.
+        double sum = 0;
+        for (int n : numbers) {
+            sum += n;
+        }
+        return sum / numbers.length;
     }
 
     public static boolean isInAscendingOrder(int[] numbers) {
         // Prüfe, ob die Zahlen im Array numbers aufsteigend sortiert sind.
+        for (int i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i] > numbers[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static String arrayToString(int[] numbers) {
