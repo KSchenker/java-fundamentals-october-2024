@@ -7,6 +7,13 @@ public class ControlStructures {
 
         // while, do while, for, for(each)
         // Alle Schleifen unterstützen die break und die continue Anweisung.
+        // whileExamples();
+
+        System.out.println(convertUnit(2E6, "MB", "GB"));
+
+    }
+
+    private static void whileExamples() {
         int i = 0;
 
         countingLoop:
@@ -51,7 +58,51 @@ public class ControlStructures {
 
 
         System.out.println("\nProgrammende\n");
+    }
 
+    public static String convertToHoursMinutesAndSeconds(int totalSeconds) {
+        // Aufgabe: Aus einer Gesamtanzahl von Sekunden sollen die Stunden, Minuten und restlichen Sekunden
+        // bestimmt werden. Das Ergebnis ist wie folgt zu formatieren: 01h 20m 15s
+        // Tipp: Verwende den Modulo-Operator zur Umrechnung.
+        // Beispiel: 3670 Sekunden ergeben -> 01h 01m 10s
+        // Tipp: Mit Methode String.format kann man formatierte Zeichenketten erstellen. Dies funktioniert analog zu
+        // printf, nur das die Ausgabe nicht auf das Terminal geschrieben wird.
+        int hours = totalSeconds / 3600; // wie oft steckt die Zahl 3600 in der Gesamtanzahl von Sekunden?
+        int remainingSeconds = totalSeconds % 3600; // Wie viele Sekunden verbleiben, wenn man die Stunden von den Sekunden abzieht?
+        int minutes = remainingSeconds / 60; // Wie viele Minuten stecken in den verbleibenden Sekunden?
+        remainingSeconds = remainingSeconds % 60; // Wie viele Sekunden verbleiben, wenn man alle Minuten abzieht?
+
+        //return String.format("%02d Stunden %02d Minuten %02d Sekunden", hours, minutes, remainingSeconds);
+        return "%02d Stunden %02d Minuten %02d Sekunden".formatted(hours, minutes, remainingSeconds);
+    }
+
+    public static double convertUnit(double value, String sourceUnit, String targetUnit) {
+        // sourceUnit und targetUnit können sein "TiB, TB, GiB, GB, MiB, MB, KiB, KB, B".
+        // 1 TiB = 1024 GiB = 1024 * 1024 MiB = 1024 * 1024 * 1024 KiB = 1024^4 Bytes
+        // 1 TB = 1000 GB = 1000 * 1000 MB = 1000 * 1000 * 1000 KB = 1000^4 Bytes
+        // Aufgabe: Rechne das Value mit der Einheit sourceUnit in einen Zahlenwert mit Einheit targetUnit um.
+        // Beispiel: convertUnit(1, "TiB", "MiB") -> 1024 * 1024 = 1048576 MiB
+        // Tipp: Verwende eine switch-Anweisung oder switch-Expression
+        // Tipp: Rechne die Eingabezahl+Unit erst einmal in Bytes um. Rechne danach in die Zieleinheit um.
+
+        // Anzahl Bytes die value Einheiten haben.
+        double totalBytes = getTotalBytes(sourceUnit) * value;
+        return totalBytes / getTotalBytes(targetUnit);
+    }
+
+    public static double getTotalBytes(String sourceUnit) {
+        return switch (sourceUnit.toLowerCase()) {
+          case "tib" -> Math.pow(1024, 4);
+          case "tb" -> Math.pow(1000, 4);
+          case "gib" -> Math.pow(1024, 3);
+          case "gb" -> Math.pow(1000, 3);
+          case "mib" -> Math.pow(1024, 2);
+          case "mb" -> Math.pow(1000, 2);
+          case "kib" -> Math.pow(1024, 1);
+          case "kb" -> Math.pow(1000, 1);
+          case "b" -> 1;
+          default -> 1; // eigentlich müsste man hier eine Exception auslösen
+        };
     }
 
     private static void switchExpressionExamples() {
