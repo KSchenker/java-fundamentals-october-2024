@@ -9,8 +9,110 @@ public class ControlStructures {
         // Alle Schleifen unterstützen die break und die continue Anweisung.
         // whileExamples();
 
-        System.out.println(convertUnit(2E6, "MB", "GB"));
+        //doWhileExamples();
+        //forExamples();
 
+        String name = "Max Mustermann";
+        // Die foreach-Schleife durchläuft alle Elemente einer Datensequenz. Die Datensequenz wird rechts vom : definiert.
+        // Links vom : wird eine Laufvariable erzeugt.
+        for (char c : name.toCharArray()) {
+            System.out.println(c);
+            if (c == 'u') {
+                // Beende Schleife sofort.
+                break;
+            }
+            if (c == 'x') {
+                // Springe zum Kopf und hole nächstes Element der Datensequenz.
+                continue;
+            }
+            c = 'x'; // Hat keinen Effekt auf die Datensequenz, da c lediglich eine Kopie des Elements enthält.
+        }
+        // Die obige foreach-Schleife ist äquivalent zu dieser for-Schleife:
+        for (int i = 0; i < name.length(); i++) {
+            System.out.println(name.charAt(i));
+        }
+
+    }
+
+    private static void forExamples() {
+        for (int i = 0, j = 10  ; i <= 10  ;  i++, j-- ) {
+            if (j == 8) {
+                // Springe zum Kopf der Schleife, genauer gesagt zum Ausdruck "i++, j--"
+                continue;
+            }
+            if (j == 5) {
+                // Verlasse die Schleife sofort.
+                break;
+            }
+            System.out.printf("(%d,%d) ", i, j);
+        }
+        System.out.println();
+
+        for (int i = 0; i <= 5; i++) {
+            System.out.println(i);
+        }
+
+        String s = "";
+        for (; s.length() < 5; ) {
+            s += "x";
+        }
+        System.out.println(s);
+    }
+
+    private static void doWhileExamples() {
+        int i = 0;
+        do {
+            if (i == 3) {
+                // Springe sofort zum Fuß der Schleife, also zur Überprüfung der Fortlaufbedingung.
+                i++;
+                continue;
+            }
+            System.out.println(i);
+            if (i == 5) {
+                // Verlasse die Schleife sofort.
+                break;
+            }
+
+            i++;
+        } while (i <= 10);
+
+        System.out.println("Programmende");
+    }
+
+    public static String toBinaryString(int number) {
+        String result = "";
+        do {
+            int rest = number % 2; // Teile number durch 2 und ermittle den Rest.
+            result = rest + result; // Stelle den Rest der Zeichenkette voran.
+            number = number / 2; // Ermittle ganzzahligen Anteil von 2.
+        } while (number > 0);
+
+        return result;
+    }
+
+    public static String toHexadecimalString(int number) {
+        // final int base = 0x10; // Hexadezimalzahl (Präfix 0x)
+        // final int base = 0b1_00_00; // Binärzahl (Präfix 0b)
+        // final int base = 020; // Oktalzahl (Präfix 0)
+        final int base = 16; // Dezimalzahl (kein Präfix)
+        String result = "";
+        do {
+            int digit = number % base;
+            result = switch (digit) {
+                case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 -> String.valueOf(digit);
+                case 10 -> "A";
+                case 11 -> "B";
+                case 12 -> "C";
+                case 13 -> "D";
+                case 14 -> "E";
+                case 15 -> "F";
+                default -> ""; // Streng genommen kann dieser Fall gar nicht auftreten.
+            } + result;
+            // number = number / base;
+            number /= base; // äquivalent zu number = number / base
+        } while (number > 0);
+
+        return result;
     }
 
     private static void whileExamples() {
