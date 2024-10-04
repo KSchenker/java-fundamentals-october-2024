@@ -1,0 +1,43 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="Gav6rJWX9uUIZ41tgREa">
+    <mxGraphModel dx="759" dy="690" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RZ59dyFLMXS_YEki_8um-3" value="10" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="240" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-4" value="12" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="300" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-5" value="7" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="364" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-6" value="5" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="430" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-7" value="9" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="490" y="140" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-8" value="0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="235" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-9" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="295" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-10" value="2" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="359" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-11" value="3" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-12" value="4" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="485" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZ59dyFLMXS_YEki_8um-13" value="Ein Array ist eine homogene Datenstruktur. Die Elemente des Arrays lassen sich durch ihren Index ansprechen. Die Elemente liegen direkt hintereinander im Speicher. Arrays unterstützen kein Löschen und auch kein Einfügen von Elementen. Arrays erlauben einen performanten wahlfreien Zugriff auf ihre Elemente." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="240" width="380" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
