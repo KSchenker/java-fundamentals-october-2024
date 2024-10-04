@@ -36,6 +36,28 @@ public class ArrayDemo {
         System.out.println(Arrays.toString(copyOfOtherNumbers)); // Bleibt unberührt von obiger Änderung, da es eine Kopie ist.
 
         System.out.println(arrayToString(otherNumbers));
+
+        // Die Elemente eines Arrays lassen sich bei dessen Erstellung direkt angeben.
+        int[] primes = new int[] { 2, 3, 5, 7, 11, 13, 17, 19 };
+        // Bei einer Variablenerstellung können wir die Elemente des Arrays in Kurzschreibweise ohne new-Operator angeben.
+        int[] primes2 = {2, 3, 5, 7, 11 };
+
+        String[] names = {"alice", "bob", "charlie", "damian"};
+        double[] revenues = {2321.3, 3, 1022, 1.2e-6};
+        boolean[] flags = {true, false, true, true};
+
+    }
+
+    public static int minIndex(int[] numbers) {
+        // Aufgabe: Finde die kleinste Zahl im Array numbers und gib ihren Index an den Aufrufer zurück.
+    }
+
+    public static double average(int[] numbers) {
+        // Aufgabe: Berechne den Durchschnitt der Zahlen im Array numbers und gib ihn an den Aufrufer zurück.
+    }
+
+    public static boolean isInAscendingOrder(int[] numbers) {
+        // Prüfe, ob die Zahlen im Array numbers aufsteigend sortiert sind.
     }
 
     public static String arrayToString(int[] numbers) {
