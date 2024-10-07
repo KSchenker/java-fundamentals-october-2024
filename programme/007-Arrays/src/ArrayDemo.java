@@ -40,9 +40,9 @@ public class ArrayDemo {
         System.out.println(arrayToString(otherNumbers));
 
         // Die Elemente eines Arrays lassen sich bei dessen Erstellung direkt angeben.
-        int[] primes = new int[] { 2, 3, 5, 7, 11, 13, 17, 19 };
+        int[] primes = new int[]{2, 3, 5, 7, 11, 13, 17, 19};
         // Bei einer Variablenerstellung können wir die Elemente des Arrays in Kurzschreibweise ohne new-Operator angeben.
-        int[] primes2 = {2, 3, 5, 7, 11 };
+        int[] primes2 = {2, 3, 5, 7, 11};
 
         String[] names = {"alice", "bob", "charlie", "damian"};
         double[] revenues = {2321.3, 3, 1022, 1.2e-6};
@@ -80,6 +80,214 @@ public class ArrayDemo {
         numbers = new int[]{5, 1, 4, 9, 8, 6};
         bubblesort(numbers);
         System.out.println(Arrays.toString(numbers));
+
+        numbers = new int[]{4, 7, 5, 3, 9, 1, 2};
+        insertionSort(numbers);
+        System.out.println(Arrays.toString(numbers));
+
+        numbers = new int[]{4, 7, 5, 3, 9, 1, 2};
+        selectionSort(numbers);
+        System.out.println(Arrays.toString(numbers));
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.printf("%02d ", fibonacci(i));
+        }
+        System.out.println();
+
+        numbers = new int[]{2, 1, 4, 5, 7};
+        System.out.println(recursiveSum(numbers)); // 19
+
+        System.out.println(recursiveProduct(numbers)); // 280
+
+        System.out.println(factorial(5)); // 120
+        System.out.println(factorial(10)); // 120
+
+        System.out.println(reverseString("Java ist toll!"));
+        System.out.println(reverseString("Lagerregal"));
+        System.out.println(reverseString("Rentner"));
+
+        numbers = new int[]{6, 8, 2, 5, 9, 1, 7, 3, 4};
+        int[] orderedNumbers = quicksort(numbers);
+        System.out.println(Arrays.toString(orderedNumbers));
+
+        int[] numbersA = {1, 2, 3, 4};
+        int[] numbersB = {9, 8, 7};
+        int[] numbersC = {11, 22};
+        int[] allNumbers = concatenate(numbersA, numbersB, numbersC, numbersA);
+        System.out.println(Arrays.toString(allNumbers));
+    }
+
+    public static int[] concatenate(int[]... arrays) {
+        // Der Parameter arrays ist ein Array von "Array von int". Er enthält alle Arrays, die
+        // beim Aufruf dieser Funktion vom Aufrufer angegeben werden.
+        int totalLength = 0;
+        // Berechne die Gesamtlänge aller Arrays mit einer for-each Schleife.
+        for (int[] anArray : arrays) {
+            totalLength += anArray.length;
+        }
+        // Erstelle das Ergebnis-Array mit der passenden Länge.
+        int[] result = new int[totalLength];
+        int next = 0; // Die Position, an der die nächste Zahl im Array result zu speichern ist.
+        // Füge nun alle Elemente aller Arrays nacheinander in das Ergebnis-Array ein.
+        for (int[] anArray : arrays) {
+            for (int n : anArray) {
+                result[next] = n;
+                next++;
+            }
+        }
+        return result;
+    }
+
+    public static int[][] partition(int[] numbers) {
+        // Wir teilen das Array numbers in 3 Teile: das erste Array enthält alle Zahlen kleiner als das gewählte
+        // Pivotelement. Danach folgt das Pivotelement als Array. Danach folgt ein weiteres Array, das alle Elemente
+        // enthält, die mindestens so groß wie das Pivotelement sind.
+        // Wähle ein Pivotelement aus und suche alle Zahlen, die kleiner und größer gleich dem Pivotelement sind.
+        int pivot = numbers[0];
+        // Im Array left tragen wir alle Zahlen ein, die kleiner als das Pivotelement sind.
+        int[] left = new int[numbers.length - 1];
+        int nextLeft = 0; // Position, an der nächste Zahl im Array left zu speichern ist.
+        // Im Array right tragen wir alle Zahlen ein, die mindestens so groß wie das Pivotelement sind.
+        int[] right = new int[numbers.length - 1];
+        int nextRight = 0; // Position, an der nächste Zahl im Array right zu speichern ist.
+        // Ordne die Zahlen in left bzw. right ein.
+        for (int i = 1; i < numbers.length; ++i) {
+            if (numbers[i] < pivot) {
+                left[nextLeft] = numbers[i];
+                nextLeft++;
+            } else {
+                right[nextRight] = numbers[i];
+                nextRight++;
+            }
+        }
+        // Die Arrays left und right werden nun "gekürzt", d.h. nicht verwendete Zellen werden entfernt. Wir erreichen
+        // dies durch Kopieren.
+        left = Arrays.copyOf(left, nextLeft); // kopiere nur die ersten nextLeft Elemente.
+        right = Arrays.copyOf(right, nextRight); // kopiere nur die ersten nextRight Elemente.
+
+        // Alle drei Komponenten werden an den Aufrufer zurückgegeben.
+        return new int[][] {
+          left, new int[] { pivot}, right
+        };
+
+    }
+
+    public static int[] quicksort(int[] numbers) {
+        // Quicksort ist ein vergleichsbasiertes Sortierverfahren, das sowohl in-place als auch out-of-place
+        // implementiert werden kann. Es ist in der Regel nicht stabil. Quicksort ist deutlich schneller
+        // als Insertion Sort, Bubble Sort und Selection Sort, kann aber im schlechtesten Fall trotzdem quadratische
+        // Laufzeit haben.
+
+        // Wir implementieren Quicksort in einer rekursiven out-of-place Variante.
+        if (numbers.length == 0) {
+            return numbers;
+        }
+
+        int[][] parts = partition(numbers);
+        // Sortiere left und right rekursiv.
+        int[] left = quicksort(parts[0]);
+        int pivot = parts[1][0];
+        int[] right = quicksort(parts[2]);
+
+        // Wir setzen nun das Gesamtergebnis aus dem sortierten left Array, dem Pivotelement und dem sortierten
+        // right Array zusammen. Wir bilden quasi "left + pivot + right"
+        int[] sortedNumbers = concatenate(left, new int[]{pivot}, right);
+        return sortedNumbers;
+    }
+
+    public static int sum(int[] numbers) {
+        // Dieser Algorithmus arbeitet iterativ. Er berechnet die Summe schrittweise durch Wiederholungen.
+        int sum = 0;
+        for (int n : numbers) {
+            sum += n;
+        }
+        return sum;
+    }
+
+    public static int recursiveSum(int[] numbers) {
+        // Trivialfälle: Array ist leer, dann ist die Summe 0.
+        if (numbers.length == 0) {
+            return 0;
+        }
+        // Kopiere alle Elemente aus numbers, bis auf das erste Element.
+        int[] subarray = Arrays.copyOfRange(numbers, 1, numbers.length);
+        // Um die Gesamtsumme zu berechnen, berechnen wir zunächst die Summe des kleineren Arrays und addieren
+        // dann das erste Element dazu.
+        return numbers[0] + recursiveSum(subarray);
+    }
+
+    public static int recursiveProduct(int[] numbers) {
+        // Aufgabe: Berechne das Produkt der Zahlen im Array numbers rekursiv.
+        if (numbers.length == 1) {
+            return numbers[0];
+        }
+        // Multipliziere das Produkt des kleineren Arrays mit dem Element an Position 1.
+        return numbers[0] * recursiveProduct(Arrays.copyOfRange(numbers, 1, numbers.length));
+    }
+
+    public static int factorial(int n) {
+        // Aufgabe: Berechne die Fakultät von n, also 1 * 2 * 3 * ... * (n-1) * n rekursiv.
+        if (n == 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
+    public static String reverseString(String s) {
+        // Aufgabe: Kehre die Zeichen in einem String s um. Verwende Rekursion.
+        // Tipp: Die Klasse String hat eine Methode namens substring, mit der man Teilbereiche aus einer Zeichenkette
+        // extrahieren kann.
+        if (s.equals("")) {
+            return "";
+        }
+        // Drehe den Rest-String um und hänge das erste Element an das Ende.
+        return reverseString(s.substring(1)) + s.charAt(0);
+    }
+
+    public static int fibonacci(int n) {
+        // Trivialfälle behandeln (diese sind das Abbruchkriterium für einen sich selbst aufrufenden Algorithmus)
+        if (n <= 2) {
+            // Hier werden die Fälle fibonacci(1) = 1 und fibonacci(2) = 1 abgedeckt.
+            return 1;
+        }
+        // Bei einem rekursiven Algorithmus berechnen wir zuerst die Lösung eines weniger komplexen Problems.
+        // Mit Hilfe dieser Teillösung berechnen wir dann die Lösung des komplexeren Problems. Dies entspricht dem
+        // Prinzip "Teile und herrsche" (Divide and Conquer).
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static void selectionSort(int[] numbers) {
+        // Selection Sort ist ein vergleichsbasiertes Sortierverfahren mit quadratischer Laufzeit. Es benötigt
+        // keinen zusätzlichen Speicher und ist demzufolge ein in-place Verfahren. Je nach Implementierung ist
+        // Selection Sort stabil oder instabil.
+        for (int i = 0; i < numbers.length - 1; i++) {
+            int minIndex = i;
+            // Suche das Minimum im Bereich [i, length - 1]
+            for (int j = i; j < numbers.length; j++) {
+                if (numbers[j] < numbers[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Vertausche das kleinste Element mit Position i.
+            swap(numbers, i, minIndex);
+        }
+    }
+
+    public static void insertionSort(int[] numbers) {
+        // Insertion Sort ist ein stabiles, vergleichsbasiertes Sortierverfahren mit quadratischer Laufzeit.
+        // Zudem arbeitet es in-place, also ohne zusätzlichen Speicher.
+        // Wir beginnen das Einfügen bei der zweiten Zahl, also bei Index 1.
+        for (int i = 1; i < numbers.length; i++) {
+            int n = numbers[i]; // Die Zahl, die eingefügt werden soll.
+            int j;
+            for (j = i; j >= 1 && numbers[j - 1] > n; j--) {
+                // Verschiebe den Vorgänger um eine Position nach rechts und schaffe somit "Platz" für die einzufügende
+                // Zahl n.
+                numbers[j] = numbers[j - 1];
+            }
+            // Die Zahl an korrekte Stelle einfügen.
+            numbers[j] = n;
+        }
     }
 
     public static void bubblesort(int[] numbers) {
@@ -112,7 +320,7 @@ public class ArrayDemo {
             // Tausche Element an Position i mit Element an Position randomIndex
             swap(numbers, randomIndex, i);
         }
-        
+
     }
 
     public static int linearSearch(int[] numbers, int element) {
