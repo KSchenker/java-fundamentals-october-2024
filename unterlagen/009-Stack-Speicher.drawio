@@ -1,0 +1,37 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="PNWuYKkKZ3tMNX1YbBNH">
+    <mxGraphModel dx="989" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eUOTx62fgxGSybyBBGa7-1" value="CALL-STACK" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="370" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eUOTx62fgxGSybyBBGa7-2" target="eUOTx62fgxGSybyBBGa7-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-2" value="main; Rücksprungadresse; lokale Variablen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="390" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-3" value="Ein Stackframe speichert lokale Variablen und Rücksprungadresse" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="520" y="405" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-5" value="recursiveProduct; Rücksprungadresse; Variable numbers" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-6" value="recursiveProduct; Rücksprungadresse; Variable numbers" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="250" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-7" value="recursiveProduct; Rücksprungadresse; Variable numbers" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="180" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-8" value="recursiveProduct; Rücksprungadresse; Variable numbers" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="110" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eUOTx62fgxGSybyBBGa7-9" value="Ein Stack Overflow tritt auf, wenn&lt;div&gt;kein Platz mehr auf dem Stack Speicher vorhanden ist.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="110" width="210" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
