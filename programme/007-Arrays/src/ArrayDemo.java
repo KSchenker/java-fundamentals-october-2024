@@ -115,6 +115,44 @@ public class ArrayDemo {
         int[] numbersC = {11, 22};
         int[] allNumbers = concatenate(numbersA, numbersB, numbersC, numbersA);
         System.out.println(Arrays.toString(allNumbers));
+
+        numbers = new int[]{5, 1, 3, 7, 4};
+        System.out.println(isUnique(numbers)); // true
+        numbers = new int[]{5, 1, 3, 1, 7, 4};
+        System.out.println(isUnique(numbers)); // false
+
+        System.out.println(Arrays.toString(slice(numbers, 2, 10))); // [3, 1, 7, 4, 5, 1, 3, 1, 7, 4]
+    }
+
+    public static boolean isUnique(int[] numbers) {
+        // Aufgabe: Bestimme, ob das Array numbers nur aus Unikaten besteht, also keine Zahl mehrfach vorkommt.
+        // Einschränkung: Das Array soll vorher nicht sortiert werden.
+        for (int i = 0; i < numbers.length; i++) {
+            // Vergleiche nun mit allen Zahlen, die auf das Element an Stelle i folgen.
+            // Hinweis: Wir brauchen nicht bei 0 beginnen, da die Elemente vor Stelle i bereits geprüft wurden und keine
+            // Duplikate hatten.
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] == numbers[j]) {
+                    // Duplikat wurde gefunden!
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static int[] slice(int[] numbers, int beginIndex, int length) {
+        // Aufgabe: Extrahiere beginnend bei Index "beginIndex" insgesamt length Elemente und speichere sie
+        // in einem neuen Array ab. Der neue Array soll dem Aufrufer zurückgegeben werden.
+        // Besonderheiten: length darf beliebig lang sein. Wenn mehr Elemente extrahiert werden sollen als vorhanden sind,
+        // dann soll die Extraktion wieder von vorne beginnen (wir behandeln numbers so, als wiederhole es sich unendlich oft)
+        // Beispiel: numbers = {1, 2, 3, 4}  slice(numbers, 1, 7) liefert [2, 3, 4, 1, 2, 3, 4]
+        int[] result = new int[length];
+        // Index i ist der Index für das Array numbers und j ist der Index für das Ergebnisarray result.
+        for (int i = beginIndex, j = 0; j < length; i = (i + 1) % numbers.length, j++) {
+            result[j] = numbers[i];
+        }
+        return result;
     }
 
     public static int[] concatenate(int[]... arrays) {
