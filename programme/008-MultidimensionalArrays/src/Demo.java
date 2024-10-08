@@ -49,7 +49,89 @@ public class Demo {
 
         System.out.println(array2D[4]); // null
 
+        int[][] visitors = {
+                // 0: 9 Uhr 1: 10 Uhr 2: 11 Uhr 3: 12 Uhr 4: 14 Uhr 5: 15 Uhr 6: 16 Uhr
+                { 20, 25, 25, 20, 15, 45, 5}, // Tag 1
+                { 10, 12, 18, 20, 10, 12, 11}, // Tag 2
+                { 25, 30, 35, 40, 40, 40, 20}, // Tag 3
+        };
+        printTable(visitors);
+        System.out.println(getVisitorCount(visitors, 2, 11)); // 18
+        System.out.println(getVisitorCount(visitors, 3, 15)); // 40
+        System.out.println(getAverageVisitorsAtTime(visitors, 9)); // 18.33333
+        System.out.println(getAverageVisitorsOnDay(visitors, 1)); // ~ 22.14
     }
+
+    private static double getAverageVisitorsAtTime(int[][] visitors, int time) {
+        // Aufgabe: Berechne die durchschnittliche Besucheranzahl zum Zeitpunkt "time".
+        // Tipp: Verwende die Methode getVisitorCount.
+        double sum = 0;
+        for (int i = 0; i < visitors.length; i++) {
+            int day = i + 1;
+            sum += getVisitorCount(visitors, day, time);
+        }
+        return sum / visitors.length;
+    }
+
+    private static double getAverageVisitorsOnDay(int[][] visitors, int day) {
+        // Aufgabe: Berechne die durchschnittliche Besucheranzahl am Tag "day".
+        // Tipp: Verwende die Methode getVisitorCount.
+        int[] times = {9, 10, 11, 12, 14, 15, 16};
+        double sum = 0;
+        for (int aTime : times) {
+            sum += getVisitorCount(visitors, day, aTime);
+        }
+        return sum / times.length;
+    }
+
+    private static int getVisitorCount(int[][] visitors, int day, int time) {
+        // Aufgabe: Aus der Besuchertabelle visitors soll die Besucherzahl zum Zeitpunkt "time" am Tag "day"
+        // zurück an den Aufrufer geliefert werden. day ist eine Zahl im Bereich 1-31. Der Parameter time
+        // darf die Werte 9, 10, 11, 12, 14, 15, 16 annehmen.
+
+        // Validiere die Parameter, d.h. prüfe ob die übergebenen Werte im definierten Bereich liegen.
+        if (day < 1 || day > 31 || time < 9 || time > 16 || time == 13) {
+            // Normalerweise würden wir an dieser Stelle eine Exception auslösen. Im Moment begnügen wir uns
+            // einfach mit einem negativen Return-Wert.
+            return -1;
+        }
+        // Hat die Tabelle Daten für den gewünschten Tag? Falls nicht, geben wir auch einfach einen negativen Wert
+        // an den Aufrufer zurück, ohne eine Exception auszulösen.
+        if ((day - 1) >= visitors.length) {
+            return -1;
+        }
+        // Wandle die Uhrzeit in einen Spaltenindex um.
+        int timeIndex = switch (time) {
+          case 9 -> 0;
+          case 10 -> 1;
+          case 11 -> 2;
+          case 12 -> 3;
+          case 14 -> 4;
+          case 15 -> 5;
+          case 16 -> 6;
+          default -> 0; // Kann nicht auftreten, aber ist notwendig, um Warnung des Compilers aufzuheben.
+        };
+        // Daten auslesen
+        return visitors[day - 1][timeIndex];
+    }
+
+    private static void printTable(int[][] visitors) {
+        // Aufgabe: Gib jeden Tag auf der Kommandozeile aus. Format: Tag xx: [20, 25, ... ]
+        int[] times = {9, 10, 11, 12, 14, 15, 16};
+        for (int aTime : times) {
+            System.out.printf("\t\t%02d", aTime);
+        }
+        System.out.println();
+        for (int day = 0; day < visitors.length; day++) {
+            //System.out.printf("Tag %02d: %s\n", day + 1, Arrays.toString(visitors[day]));
+            System.out.printf("Tag %02d: ", day + 1);
+            for (int count : visitors[day]) {
+                System.out.printf("%02d\t\t", count);
+            }
+            System.out.println();
+        }
+    }
+
 
     public static void tableOfRows() {
         // Modelliere folgende Tabelle als zweidimensionalen Array
@@ -93,6 +175,12 @@ public class Demo {
         // Array-Initializer verwenden, um es wesentlich kürzer zu
         // formulieren.
         int[][] table2 = {
+                {20, 33, 12, 0}, // Spalte 1
+                {25, 56, 8, 0}, // Spalte 2
+                {10, 87, 0, 1}, // Spalte 3
+        };
+        // Beim nachträglichen Neuzuweisen muss zumindest der Datentyp mit new Operator angegeben werden.
+        table2 = new int[][] {
                 {20, 33, 12, 0}, // Spalte 1
                 {25, 56, 8, 0}, // Spalte 2
                 {10, 87, 0, 1}, // Spalte 3
