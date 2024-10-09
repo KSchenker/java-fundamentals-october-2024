@@ -60,6 +60,48 @@ public class Demo {
         System.out.println(getVisitorCount(visitors, 3, 15)); // 40
         System.out.println(getAverageVisitorsAtTime(visitors, 9)); // 18.33333
         System.out.println(getAverageVisitorsOnDay(visitors, 1)); // ~ 22.14
+
+        int[][] table = spiral(7, 7);
+        printTable(table);
+
+    }
+
+    public static void printTable(int[][] table) {
+        for (int[] row : table) {
+            for (int i = 0; i < row.length; ++i) {
+                System.out.printf("%02d ", row[i]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[][] spiral(int totalRows, int totalColumns) {
+        int[][] spiral = new int[totalRows][totalColumns];
+
+        for (int i = 1; true; i++) {
+            // Berechne linke obere und rechte untere Ecke der einzutragenden Zahl.
+            int startRow = i - 1;
+            int startColumn = i - 1;
+            int endRow = totalRows - i;
+            int endColumn = totalColumns - i;
+
+            // Breche ab, falls für die Zahl "kein Platz" vorhanden ist.
+            if (startRow > endRow || startColumn > endColumn) {
+                break;
+            }
+
+            // Trage die beiden horizontalen Linien des "Rings" ein.
+            for (int column = startColumn; column <= endColumn; column++) {
+                spiral[startRow][column] = spiral[endRow][column] = i;
+            }
+            // Trage die beiden vertikalen Linien des "Rings" ein.
+            for (int row = startRow; row <= endRow; row++) {
+                spiral[row][startColumn] = i;
+                spiral[row][endColumn] = i;
+            }
+        }
+
+        return spiral;
     }
 
     private static double getAverageVisitorsAtTime(int[][] visitors, int time) {
@@ -115,7 +157,7 @@ public class Demo {
         return visitors[day - 1][timeIndex];
     }
 
-    private static void printTable(int[][] visitors) {
+    private static void printVisitors(int[][] visitors) {
         // Aufgabe: Gib jeden Tag auf der Kommandozeile aus. Format: Tag xx: [20, 25, ... ]
         int[] times = {9, 10, 11, 12, 14, 15, 16};
         for (int aTime : times) {
@@ -131,7 +173,6 @@ public class Demo {
             System.out.println();
         }
     }
-
 
     public static void tableOfRows() {
         // Modelliere folgende Tabelle als zweidimensionalen Array
