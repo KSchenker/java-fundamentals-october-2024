@@ -64,6 +64,41 @@ public class Demo {
         int[][] table = spiral(7, 7);
         printTable(table);
 
+        int[][] board = {
+                { 1,  2,  3,  4,  5,  6},
+                { 7,  8,  9, 10, 11, 12},
+                {13, 14, 15, 16, 17, 18},
+        };
+        System.out.println(Arrays.toString(getHorizontalLine(board, 0, 0, 3))); // [1, 2, 3]
+        System.out.println(Arrays.toString(getHorizontalLine(board, 0, 0, 10))); // [1, 2, 3, 4, 5, 6]
+        System.out.println(Arrays.toString(getHorizontalLine(board, 1, 2, 10))); // [9, 10, 11, 12]
+
+        System.out.println(Arrays.toString(getVerticalLine(board, 0, 0, 10))); // [1, 7, 13]
+        System.out.println(Arrays.toString(getVerticalLine(board, 0, 0, 2))); // [1, 7]
+        System.out.println(Arrays.toString(getVerticalLine(board, 0, 0, 1))); // [1]
+        System.out.println(Arrays.toString(getVerticalLine(board, 0, 0, 0))); // []
+        System.out.println(Arrays.toString(getVerticalLine(board, 1, 2, 2))); // [9, 15]
+
+        int[][] diagonals = getDiagonals(board, 0, 0, 10);
+        printArray2D(diagonals); // [ [1, 8, 15], [1] ]
+        diagonals = getDiagonals(board, 1, 3, 10);
+        printArray2D(diagonals); // [ [10, 17], [10, 15] ]
+
+        System.out.println(areAllEqual(new int[] { 2, 2, 2 })); // true
+        System.out.println(areAllEqual(new int[] { 1, 1, 1 })); // true
+        System.out.println(areAllEqual(new int[] { 1, 2, 1 })); // false
+        System.out.println(areAllEqual(new int[] {  })); // true
+        System.out.println(areAllEqual(new int[] { 0 })); // true
+
+        board = new int[][] {
+                {0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0},
+                {0, 2, 0, 1, 0, 0, 0},
+                {0, 0, 2, 0, 0, 0, 0},
+                {0, 1, 0, 2, 0, 0, 0},
+                {0, 0, 0, 0, 2, 0, 0},
+        };
+        System.out.println(hasConnectionOfFour(board));
     }
 
     public static void printTable(int[][] table) {
@@ -102,6 +137,142 @@ public class Demo {
         }
 
         return spiral;
+    }
+
+    public static boolean hasConnectionOfFour(int[][] board) {
+        // Aufgabe: Prüfe, ob es auf dem Spielfeld mindestens eine 4er-Reihe gibt. Eine Reihe kann vertikal, horizontal
+        // oder diagonal sein und besteht aus mindestens 4 gleichen Zahlen (ungleich 0).
+        // Hinweis: Verwende die bereits implementierten Methoden getHorizontalLine, getVerticalLine, getDiagonals, areAllEqual
+        // Hinweis: Die Zahl 0 bedeutet "nicht belegt" und soll ignoriert werden.
+        final int LENGTH = 4;
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[row].length; column++) {
+                int cell = board[row][column];
+                if (cell == 0){
+                    // Ignoriere Zellen, die den Wert 0 enthalten.
+                    continue;
+                }
+                // Ermittle ausgehend von der aktuellen Zelle alle möglichen 4er Reihen (horizontal, vertikal, diagonal)
+                int[][] lines = {
+                  getHorizontalLine(board, row, column, LENGTH),
+                  getVerticalLine(board, row, column, LENGTH),
+                  getDiagonals(board, row, column, LENGTH)[0],
+                  getDiagonals(board, row, column, LENGTH)[1],
+                };
+                // Gibt es unter diesen Reihen mindestens eine, die 4 gleiche Elemente besitzt?
+                for (int[] line : lines) {
+                    if (line.length == LENGTH && areAllEqual(line)) {
+                        System.out.printf("(%02d, %02d)\n", row, column);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean areAllEqual(int[] numbers) {
+        // Aufgabe: Bestimme, ob alle Zahlen im Array numbers denselben Wert haben.
+        // Hinweis: Wenn numbers leer sein sollte, gilt automatisch true.
+        if (numbers.length == 0) {
+            return true;
+        }
+        // Vergleiche alle Elemente mit dem ersten Element. Stellen wir eine Abweichung fest, geben wir false
+        // zurück. Andernfalls müssen alle Elemente gleich gewesen sein.
+        int firstValue = numbers[0];
+        for (int value : numbers) {
+            if (value != firstValue) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int[] getHorizontalLine(int[][] board, int startRow, int startColumn, int maxLength) {
+        // Aufgabe: Extrahiere höchstens maxLength Elemente aus dem Array board, beginnend an Position
+        // (startRow, startColumn). Die Elemente sind in horizontaler Richtung nach rechts herauszuextrahieren.
+        // Hinweis: Achte auf ungültige Indizes. Wenn nicht genügend Elemente vorhanden sind, dann gib entsprechend
+        // weniger Elemente zurück.
+        // Hinweis: Das board ist ein Array von "Zeilen-Arrays", d.h. board[0] ist die erste Zeile, board[1] die 2. Zeile.
+        if (!isValidPosition(board, startRow, startColumn)) {
+            return new int[] {};
+        }
+        // Berechne, wie viele Elemente wir theoretisch aus der Zeile herauskopieren können.
+        int remaining = board[startRow].length - startColumn;
+        // Berechne, wie viele Elemente wir tatsächlich herauskopieren können.
+        int count = Math.min(maxLength, remaining);
+        // Neues Array erstellen und Elemente hineinkopieren.
+        int[] line = new int[count];
+        for (int column = startColumn, lineIndex = 0; column < startColumn + count; column++, lineIndex++) {
+            line[lineIndex] = board[startRow][column];
+        }
+        return line;
+    }
+
+    public static int[] getVerticalLine(int[][] board, int startRow, int startColumn, int maxLength) {
+        // Aufgabe: Kopiere höchstens maxLength Elemente beginnend an Position (startRow, startColumn) aus dem Array board.
+        // Die Elemente sind in vertikaler Richtung (nach unten) zu kopieren.
+        if (!isValidPosition(board, startRow, startColumn)) {
+            return new int[] {};
+        }
+        // Lege zunächst ein Array an, das maxLength Zahlen speichern kann.
+        int[] line = new int[maxLength];
+        // Befülle das Array line
+        int i = 0;
+        for (i = 0; i < maxLength; i++) {
+            int row = startRow + i;
+            // Wenn die Zeile nicht mehr im Spielbrett vorhanden ist, dann stoppen wir das "Befüllen" bzw. "Auslesen".
+            if (!isValidPosition(board, row, startColumn)) {
+                break;
+            }
+            line[i] = board[row][startColumn];
+        }
+        // "Kürze" das Array auf die Anzahl der tatsächlich geschriebenen Elemente.
+        return Arrays.copyOf(line, i);
+    }
+
+    public static int[][] getDiagonals(int[][] board, int startRow, int startColumn, int maxLength) {
+        // Aufgabe: Extrahiere die Elemente, die auf einer Diagonalen mit dem Element an Position (startRow, startColumn)
+        // liegen (Startpunkt der Diagonalen). Gib sowohl die Diagonale von "links oben nach rechts unten" als auch die Diagonale "rechts oben nach links unten"
+        // an den Aufrufer zurück. Jede Diagonale soll höchstens maxLength Elemente enthalten.
+        if (!isValidPosition(board, startRow, startColumn)) {
+            return new int[][] {};
+        }
+        int[][] result = new int[2][]; // [null, null]
+        // Diagonale von links oben nach rechts unten
+        int[] diagonal = new int[maxLength];
+        int i = 0;
+        for (i = 0; i < maxLength; ++i) {
+            int row = startRow + i;
+            int column = startColumn + i;
+            if (isValidPosition(board, row, column)) {
+                diagonal[i] = board[row][column];
+            } else {
+                break;
+            }
+        }
+        // Speichere "gekürzte" Diagonale im Ergebnis-Array ab.
+        result[0] = Arrays.copyOf(diagonal, i);
+        // Ermittle Diagonale von rechts oben nach links unten.
+        diagonal = new int[maxLength];
+        for (i = 0; i < maxLength; i++) {
+            int row = startRow + i;
+            int column = startColumn - i;
+            if (isValidPosition(board, row, column)) {
+                diagonal[i] = board[row][column];
+                continue;
+            }
+            break;
+        }
+        // Speichere "gekürzte Diagonale"
+        result[1] = Arrays.copyOf(diagonal, i);
+        // Ergebnis-Array an Aufrufer zurückgeben
+        return result;
+    }
+
+    public static boolean isValidPosition(int[][] board, int row, int column) {
+        // Aufgabe: Prüfe, ob die Position (row, column) innerhalb von board liegt.
+        return row >= 0 && row < board.length && column >= 0 && column < board[row].length;
     }
 
     private static double getAverageVisitorsAtTime(int[][] visitors, int time) {

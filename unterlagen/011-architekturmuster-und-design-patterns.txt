@@ -1,0 +1,22 @@
+Grundidee der folgenden Architekturmuster ist folgende:
+Man möchte den Code bzw. die Logik für die Präsentation (
+Darstellung der Fenster, Reaktion auf Eingabe durch Benutzer, Fenstersteuerung etc.)
+von Code der Geschäftslogik (z.B. Lohnabrechnung, Steuerklassen, Sozialabgaben, )
+
+Model-View-Controller
+Model-View-Presenter
+Model-ViewModel-View (MVVM)
+
+Design Patterns (Bewährte Lösungen für immer wiederkehrende Probleme in der objektorientierten Programmierung):
+
+- Observer Pattern
+- Abstract Factory
+- Proxy
+- State
+- Decorator
+- Singleton
+- Factory Method
+- Builder
+- Strategy
+
+ 
