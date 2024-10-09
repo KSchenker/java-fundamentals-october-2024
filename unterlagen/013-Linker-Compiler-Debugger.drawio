@@ -1,0 +1,141 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="8UB64keMGYDpBR5izc_7">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PZz35myuhVAmiv-F-KNg-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-1" target="PZz35myuhVAmiv-F-KNg-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-14" value="Compiler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-7">
+          <mxGeometry x="-0.3414" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-1" target="PZz35myuhVAmiv-F-KNg-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="255" y="60" />
+              <mxPoint x="375" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-13" value="abhängig von" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-10">
+          <mxGeometry x="-0.55" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-1" target="PZz35myuhVAmiv-F-KNg-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-24" value="abhängig von" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-23">
+          <mxGeometry x="-0.298" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-1" value="Quelltextdatei A&lt;div&gt;(.c, .cpp)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="80" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-2" target="PZz35myuhVAmiv-F-KNg-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-2" value="Object Code A&lt;div&gt;(.o, .so)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="180" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-3" target="PZz35myuhVAmiv-F-KNg-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-15" value="Compiler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-8">
+          <mxGeometry x="-0.1345" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-3" value="Quelltextdatei B" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="80" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-4" target="PZz35myuhVAmiv-F-KNg-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-16" value="Compiler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-9">
+          <mxGeometry x="-0.2724" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-4" target="PZz35myuhVAmiv-F-KNg-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="495" y="60" />
+              <mxPoint x="403" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-12" value="abhängig von" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-11">
+          <mxGeometry x="-0.4711" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-4" value="Quelltextdatei C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-5" target="PZz35myuhVAmiv-F-KNg-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-5" value="Object Code B&lt;div&gt;(.o, .so)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-6" target="PZz35myuhVAmiv-F-KNg-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="495" y="370" />
+              <mxPoint x="375" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-6" value="Object Code C&lt;div&gt;(.o, .so)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-17" value="Ausführbare Datei (z.B. exe) oder eine Bibliothek (z.B. dll)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-21" value="(Statischer) Linker verknüpft Object-Code Dateien zu einer ausführbaren Datei inklusive benötigter Bibliotheken" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="320" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-22" target="PZz35myuhVAmiv-F-KNg-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="85" y="370" />
+              <mxPoint x="375" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-22" value="Bibliotheken (z.B. dll)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="280" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-26" target="PZz35myuhVAmiv-F-KNg-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-29" value="dynamische Linker" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="PZz35myuhVAmiv-F-KNg-28">
+          <mxGeometry x="-0.15" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-26" value="Ausführbare Datei (z.B. exe) oder eine Bibliothek (z.B. dll)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-27" value="Ausführbares Speicher-Image der ausführbaren Datei" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PZz35myuhVAmiv-F-KNg-30" target="PZz35myuhVAmiv-F-KNg-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PZz35myuhVAmiv-F-KNg-30" value="Dynamische Programmbibliotheken (dll, dynlib, so)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="600" width="185" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

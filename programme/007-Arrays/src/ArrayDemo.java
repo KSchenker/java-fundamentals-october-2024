@@ -122,6 +122,35 @@ public class ArrayDemo {
         System.out.println(isUnique(numbers)); // false
 
         System.out.println(Arrays.toString(slice(numbers, 2, 10))); // [3, 1, 7, 4, 5, 1, 3, 1, 7, 4]
+
+        numbers = new int[]{3, 4, 1, 8, 7, 5, 9};
+        bubblesort(numbers);
+        System.out.println(Arrays.toString(numbers));
+        for (int n : numbers) {
+            System.out.println(binarySearch(numbers, n));
+        }
+        System.out.println(binarySearch(numbers, 10)); // -1
+    }
+
+    public static int binarySearch(int[] numbers, int n) {
+        // Suche die Zahl n im AUFSTEIGEND SORTIERTEM Array "numbers" und gib ihren Index an den Aufrufer zurück.
+        // Falls die Zahl n nicht im Array enthalten ist, gib -1 zurück.
+        int start = 0;
+        int end = numbers.length - 1;
+
+        while (start <= end) {
+            int middle = (start + end) / 2;
+            if (numbers[middle] == n) {
+                return middle;
+            } else if (numbers[middle] > n) {
+                // Wir reduzieren den Suchbereich und verkleinern die rechte Grenze des Suchbereichs.
+                end = middle - 1;
+            } else {
+                // Wir reduzieren den Suchbereich, indem wir die linke Grenze des Suchbereichs vergrößern.
+                start = middle + 1;
+            }
+        }
+        return -1;
     }
 
     public static boolean isUnique(int[] numbers) {
