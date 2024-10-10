@@ -130,6 +130,13 @@ public class ArrayDemo {
             System.out.println(binarySearch(numbers, n));
         }
         System.out.println(binarySearch(numbers, 10)); // -1
+
+//        System.out.println("Kombinationen:");
+//        String[] combinations = combinationsOfThree("xyz");
+//        System.out.println(Arrays.toString(combinations));
+//        System.out.println(combinations.length);
+
+        System.out.println(Arrays.toString(combinations("abc")));
     }
 
     public static int binarySearch(int[] numbers, int n) {
@@ -489,4 +496,79 @@ public class ArrayDemo {
         }
         return result + "]";
     }
+
+    public static String[] combinationsOfThree(String characters) {
+        // Aufgabe: Bestimme alle Kombinationen der Zeichenkette characters und gib diese in Form eines Arrays an
+        // den Aufrufer zurück. In der ersten Version darfst du davon ausgehen, dass die Zeichenkette exakt 3
+        // Zeichen lang ist.
+        // Beispiel: Wenn characters "xyz" ist, dann sind zum Beispiel "xxy" und "zxz" zwei von insgesamt 27 möglichen
+        // Kombinationen.
+
+        int length = characters.length();
+        // Haben wir n Zeichen, können wir insgesamt n^n verschiedene Kombinationen bilden.
+        int combinationCount = (int)Math.pow(length, length);
+        String[] combinations = new String[combinationCount];
+        int nextIndex = 0; // Gibt an, an welcher Stelle die nächste Kombination im Ergebnis-Array zu speichern ist.
+
+        for (int i = 0; i < characters.length(); ++i) {
+            for (int j = 0; j < characters.length(); j++) {
+                for (int k = 0; k < characters.length(); k++) {
+                    String combination = "" + characters.charAt(i) + characters.charAt(j) + characters.charAt(k);
+                    combinations[nextIndex] = combination;
+                    nextIndex++;
+                }
+            }
+        }
+
+        return combinations;
+    }
+
+    public static String[] combinations(String characters) {
+        // Wir schreiben nun einen Algorithmus für Kombinationen, der mit beliebig langen Zeichenketten arbeiten kann.
+        // Die Idee: Wir simulieren n ineinander geschachtelte for-Schleifen, wobei n die Länge der Zeichenkette
+        // characters ist.
+
+        // Für jede der n simulierten for-Schleifen wird eine Laufvariable / Zählervariable erstellt und in einem
+        // Array gespeichert.
+        // Annahme: Das erste Element des Arrays ist die Laufvariable der äußersten for-Schleife und das letzte
+        // Element ist die Laufvariable der innersten for-Schleife.
+        int length = characters.length();
+        int[] loopVariables = new int[length];
+        // Ergebnis-Array anlegen
+        String[] allCombinations = new String[(int)Math.pow(length, length)];
+        int nextIndex = 0; // Stelle, an der nächste Kombination im Ergebnis-Array zu speichern ist.
+
+        while (true) {
+            // Anhand des aktuellen Zustands unserer Laufvariablen ermitteln wir die Kombination aus den Zeichen und
+            // speichern sie ab.
+            String aCombination = "";
+            for (int index : loopVariables) {
+                aCombination += characters.charAt(index);
+            }
+            allCombinations[nextIndex++] = aCombination;
+            // Suche ausgehend vom letzten Element (Laufvariable) nach einem Element, dass wir um 1 vergrößern können.
+            // Alle Elemente, die dann rechts davon stehen, werden dabei auf 0 zurückgesetzt.
+            int i = length - 1;
+            // Suche nach einer Laufvariablen, die noch nicht ihr Maximum erreicht hat.
+            while (i >= 0 && loopVariables[i] >= length - 1) {
+                i--;
+            }
+            // Falls wir keine Laufvariable mehr vergrößern konnten, ist die äußerste Schleife vollständig durchgelaufen
+            // und es gibt keine weiteren Kombination mehr.
+            if (i < 0) {
+                break;
+            }
+            loopVariables[i]++; // Vergrößere Laufvariable um 1
+            // Setze alle Laufvariablen rechts von Stelle i wieder auf 0 zurück.
+            i++;
+            while (i < length) {
+                loopVariables[i] = 0;
+                i++;
+            }
+        }
+
+        return allCombinations;
+
+    }
+
 }
