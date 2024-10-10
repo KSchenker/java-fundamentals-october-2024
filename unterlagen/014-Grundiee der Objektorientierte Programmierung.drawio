@@ -1,0 +1,64 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="VDYuLSGpiqh_mkbvwCtC">
+    <mxGraphModel dx="819" dy="482" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Aicl-OooxuoP1UyodAbv-2" value="SOFTWARE" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="110" y="280" width="550" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-1" target="Aicl-OooxuoP1UyodAbv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="150" y="350" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-3" target="Aicl-OooxuoP1UyodAbv-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="470" y="350" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-4" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="470" y="580" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-5" target="Aicl-OooxuoP1UyodAbv-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-5" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="180" y="620" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-8" target="Aicl-OooxuoP1UyodAbv-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-8" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="150" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-10" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="180" y="740" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-16" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;endArrow=none;endFill=0;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-12" target="Aicl-OooxuoP1UyodAbv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-12" value="Identität&lt;div&gt;(durch die JVM sichergestellt)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="270" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-17" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-13" target="Aicl-OooxuoP1UyodAbv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-13" value="Attributen / Eigenschaften&lt;div&gt;(in Java: Fields)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="630" y="340" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-18" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" edge="1" parent="1" source="Aicl-OooxuoP1UyodAbv-14" target="Aicl-OooxuoP1UyodAbv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-14" value="Verhalten / Handlungskompetenz&amp;nbsp;&lt;div&gt;(in Java: Methods)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="570" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Aicl-OooxuoP1UyodAbv-15" value="Klassen sind Baupläne für Objekte. Manchmal nennt man sie auch &quot;Objektfabriken&quot;.&lt;div&gt;Hinweis: Eine Klasse kann auch Methoden und Felder definieren, die nicht Bestandteil der von ihr erstellten Objekte sind. Man nennt solche Felder und Methoden statisch. (Gutes Beispiel ist die Klasse Math in Java)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="180" width="390" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
