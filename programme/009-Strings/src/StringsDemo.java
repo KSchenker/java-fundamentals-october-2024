@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class StringsDemo {
 
     public static void main(String[] args) {
@@ -132,7 +134,68 @@ public class StringsDemo {
         // Die Methoden trim und strip entfernen führende und nachfolgende Leerzeichen einer Zeichenkette.
         System.out.println("   hallo\t\r\njava\n\t     ".strip());
 
+        // Mit split können wir eine Zeichenkette anhand einer anderen Zeichenkette / Trennzeichen auftrennen.
+        // Achtung: Der Punkt hat in regulären Ausdrücken eine Sonderbedeutung: er steht nämlich als Platzhalter
+        // für ein beliebiges Zeichen. Um seine Sonderbedeutung aufzuheben, muss der Punkt maskiert werden. Für
+        // die Maskierung verwenden wir einen Backslash. Problem: Der Backslash hat in Java-Zeichenketten auch eine
+        // Sonderbedeutung und muss deshalb ebenfalls maskiert werden. So entsteht \\.
+        String[] parts = "xx.yy.zz".split("\\.");
+//        String[] parts = "xx:yy:zz".split(":");
+        System.out.println(Arrays.toString(parts));
 
+        // Mit der Methode replace können wir Zeichen bzw. Zeichenketten durch andere Zeichen / Zeichenketten ersetzen.
+        String text = "Max Müller hat ähnlich geöffnet wie Üzgür.";
+        // Ersetze alle Umlaute in text.
+        text = text.replace("ü", "ue")
+                .replace("ä", "ae")
+                .replace("ö", "oe")
+                .replace("Ü", "Ue")
+                .replace("Ä", "Ae")
+                .replace("Ö", "Oe");
+        System.out.println(text);
+
+        // Aufgabe: Der obige Code soll verbessert werden. Die zu ersetzenden Zeichen sollen in einem Array verwaltet
+        // werden. Beispiel.
+        String[][] replacements = {
+                {"Ö", "Oe"},
+                {"Ä", "Ae"},
+                {"Ü", "Ue"},
+                {".", ""},
+                {"ö", "oe"},
+                {"ü", "ue"},
+                {"ä", "ae"},
+        };
+        // Schreibe nun eine kleine Schleife, die alle Ersetzungen in Variable replacements für die Variable text
+        // vornimmt.
+        text = "Max Müller hat ähnlich geöffnet wie Üzgür.";
+        text = replaceMany(text, replacements);
+        System.out.println(text);
+        text = replaceMany("!Hey:Ho!@", new String[] { "!", ""}, new String[] {":", ""}, new String[] {"@", " at "});
+        System.out.println(text);
+
+        // Der Pfadtrenner in Windows ist der Backslash.
+        String path = "C:\\Programme\\IntelliJ\\settings.json";
+        // Mit Methode lastIndexOf können wir das letzte Vorkommen eines Zeichens in einer Zeichenkette finden.
+        int indexOfLastSeparator = path.lastIndexOf("\\");
+        if (indexOfLastSeparator >= 0) {
+            // Mit Methode substring lassen wir uns die Zeichen "rechts vom letzten Pfadtrenner" geben.
+            String filename = path.substring(indexOfLastSeparator + 1);
+            String fileExtension = filename.split("\\.", 2)[1];
+            System.out.println(filename + " Dateiendung ist " + fileExtension);
+        } else {
+            // Wir nehmen an, dass der Pfad nur aus einem Dateinamen ohne Verzeichnisangabe besteht.
+            System.out.println(path);
+        }
+
+
+    }
+
+    // Aufgabe: Lagere den Ersetzungscode in eine allgemeingültige, wiederverwendbare statische Methode aus.
+    public static String replaceMany(String text, String[]... replacements) {
+        for (String[] aReplacement : replacements) {
+            text = text.replace(aReplacement[0], aReplacement[1]);
+        }
+        return text;
     }
 
 
