@@ -1,0 +1,47 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Seite-1" id="AZCW5sO88a638Ma4Jlyp">
+    <mxGraphModel dx="1816" dy="582" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-1" value="Applikation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-2" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="0Ue7t3seW11MFPYtxyHe-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="210" as="sourcePoint" />
+            <mxPoint x="220" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-6" value="Standard Input Stream&lt;div&gt;System.in&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="0Ue7t3seW11MFPYtxyHe-2">
+          <mxGeometry x="-0.7476" relative="1" as="geometry">
+            <mxPoint x="82" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-3" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440.0000000000002" y="195.9999999999999" as="sourcePoint" />
+            <mxPoint x="640" y="196" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-5" value="Standard Output Stream&lt;div&gt;System.out&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="0Ue7t3seW11MFPYtxyHe-3">
+          <mxGeometry x="-0.0555" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-4" value="Standard Error Stream&lt;div&gt;System.err&lt;/div&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440.0000000000002" y="225.9999999999999" as="sourcePoint" />
+            <mxPoint x="640" y="226" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-10" value="Terminal, Datei, Netzwerkverbindung,&lt;div&gt;Eingabe für andere Applikation&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="650" y="150" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="0Ue7t3seW11MFPYtxyHe-11" value="Terminal, Datei, Netzwerkverbindung,&lt;div&gt;Ausgaben anderer Applikation&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="145" width="130" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
