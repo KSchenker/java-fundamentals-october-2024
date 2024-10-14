@@ -1,0 +1,13 @@
+- 4 gewinnt auf Kommandozeile
+- XXO / Tic-Tac-Toe auf Kommandozeile
+- Schere-Stein-Papier-Brunnen
+- Hangman / Galgenraten
+- Taschenrechner, aber mit Klammerung und negativen Zahlen sowie Gleitkommazahlen (Vorrang beachten!)
+
+Bewertungskriterien:
+
+- Aufteilung des Programms in mehrere kleine Methoden mit spezifischen Aufgaben
+- einheitliches Namensschema für Variablen und Methoden, aussagekräftige Bezeichner
+- Das Programm sollte funktionieren und das möglichst fehlerfrei
+- fertige mindestens ein UML Diagramm an (z.B. Aktivitätsdiagramm, Sequenzdiagramm, Zustandsdiagramm)
+- Vorstellung des Programms inklusive Erläuterung des Quelltextes in Form eines 15 minütigen Vortrags
