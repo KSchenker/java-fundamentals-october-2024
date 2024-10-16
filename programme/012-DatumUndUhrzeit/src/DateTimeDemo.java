@@ -1,7 +1,6 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAccessor;
+import java.time.temporal.*;
 
 public class DateTimeDemo {
     public static void main(String[] args) {
@@ -172,11 +171,109 @@ public class DateTimeDemo {
         long daysUntilBirthday = 0;
         if (today.isBefore(birthdateInThisYear)) {
             daysUntilBirthday = ChronoUnit.DAYS.between(today, birthdateInThisYear);
+//            daysUntilBirthday = Duration.between(today.atStartOfDay(), birthdateInThisYear.atStartOfDay()).toDays();
         } else {
             daysUntilBirthday = ChronoUnit.DAYS.between(today, birthdateNextYear);
+//            daysUntilBirthday = Duration.between(today.atStartOfDay(), birthdateNextYear.atStartOfDay()).toDays();
         }
 
         System.out.printf("Peter hat in %d Tagen seinen nächsten Geburtstag\n", daysUntilBirthday);
+
+        System.out.println(getStartOfFirstCalendarWeek(Year.of(2024)));
+        System.out.println(getStartOfFirstCalendarWeek(Year.of(2023)));
+        System.out.printf("%s bis %s\n",
+                getStartOfFirstCalendarWeek(Year.of(2024)),
+                getEndOfFirstCalendarWeek(Year.of(2024))
+        );
+        System.out.printf("%s bis %s\n",
+                getStartOfFirstCalendarWeek(Year.of(2025)),
+                getEndOfFirstCalendarWeek(Year.of(2025))
+        );
+        System.out.println(getStartOfLastCalendarWeek(Year.of(2024)));
+        System.out.println();
+
+        System.out.println(today);
+        System.out.println(today.with(TemporalAdjusters.lastDayOfYear()));
+        System.out.println(today.with(TemporalAdjusters.firstDayOfYear()));
+        System.out.println(today.with(TemporalAdjusters.firstDayOfMonth()));
+        System.out.println(today.with(TemporalAdjusters.lastDayOfMonth()));
+        // Bestimme ersten Donnerstag des aktuellen Monats.
+        System.out.println(today.with(TemporalAdjusters.firstInMonth(DayOfWeek.THURSDAY)));
+        // Bestimme letzten Donnerstag des aktuellen Monats.
+        System.out.println(today.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY)));
+        // Ermittle den nächsten Donnerstag.
+        System.out.println(today.with(TemporalAdjusters.next(DayOfWeek.THURSDAY)));
+        // Ermittle den vorherigen Donnerstag.
+        System.out.println(today.with(TemporalAdjusters.previous(DayOfWeek.THURSDAY)));
+        // Bestimme nächsten Mittwoch. Falls der aktuelle Tag ein Mittwoch ist, gib ihn zurück.
+        System.out.println(today.with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY)));
+
+        System.out.println(getThirdThursday(Year.of(2024), Month.AUGUST));
+
     }
+
+    // Aufgabe: Bestimme den DRITTEN Donnerstag eines Monats M in einem Jahr J. Verwende
+    // die Mechanismen von TemporalAdjusters.
+    public static LocalDate getThirdThursday(Year year, Month month) {
+        LocalDate date = LocalDate.of(year.getValue(), month, 1);
+        // Finde ersten Donnerstag des Monats und addiere 2 Wochen (14 Tage drauf).
+        LocalDate firstThursday = date.with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY));
+        return firstThursday.plusWeeks(2);
+    }
+
+    // Aufgabe: Für ein gegebenes Jahr soll das Start und Enddatum der ersten Kalenderwoche berechnet werden.
+    // Die erste Kalenderwoche eines Jahres J ist jene Woche, die MINDESTENS 4 Tage aus dem Jahr J enthält.
+    // Hinweis: Der 1.1.J ist nicht immer ein Montag, d.h. er kann durchaus noch zur letzten KW des Vorjahres J-1
+    // gehören.
+    // Standard: ISO 8601: Nach dem ISO-Standard wird die erste Kalenderwoche als die Woche definiert,
+    // die den ersten Donnerstag des Jahres enthält. Das bedeutet, dass der 4. Januar immer in der ersten Kalenderwoche liegt.
+    public static LocalDate getStartOfFirstCalendarWeek(Year year) {
+        // Ermittle den 4. Januar des neues Jahres.
+        LocalDate fourthJanuary = LocalDate.of(year.getValue(), 1, 4);
+        // Gehe nun solange Tag für Tag zurück, bis wir den Montag erreichen. Das ist dann der Beginn der Kalenderwoche 1.
+        LocalDate start = fourthJanuary;
+        while (start.getDayOfWeek() != DayOfWeek.MONDAY) {
+            start = start.minusDays(1);
+        }
+        return start;
+    }
+
+    public static LocalDate getEndOfFirstCalendarWeek(Year year) {
+        // Ermittle das Enddatum der ersten Kalenderwoche des Jahres.
+        // Idee: Ermittle Beginn der Kalenderwoche und rechne 6 Tage drauf.
+        return getStartOfFirstCalendarWeek(year).plusDays(6);
+    }
+
+    public static LocalDate getStartOfLastCalendarWeek(Year year) {
+        // Ermittle das Startdatum der letzten Kalenderwoche des Jahres.
+        // Idee: Ermittle Startdatum der 1. KW des Folgejahres und ziehe 7 Tage ab.
+        return getStartOfFirstCalendarWeek(year.plusYears(1)).minusDays(7);
+    }
+
+    public static LocalDate getStartOfCalendarWeek(Year year, int weekNumber) {
+        // Ermittle den Beginn der Kalenderwoche "weekNumber" (1-52/53).
+        // Idee: Ermittle Startdatum der 1. KW des Jahres und rechne ein Vielfaches von 7 Tagen darauf.
+        LocalDate start = getStartOfFirstCalendarWeek(year).plusDays(7 * (weekNumber - 1));
+        return start;
+    }
+
+    // ISO Kalenderwochen und ISO Kalenderjahre
+    // Der ISO 8601 Standard teilt ein Jahr in nicht überlappende Kalenderwochen ein, wobei
+    // jede Kalenderwoche immer mit einem Montag beginnt. Ein Kalenderjahr besteht entweder aus
+    // 52 oder aus 53 Kalenderwochen.
+    //
+    // Mit WeekFields.ISO.weekBasedYear und WeekFields.ISO.weekofWeekBasedYear
+    // lässt sich das Kalenderjahr eines Datums und die Kalenderwoche
+    // ermitteln.
+    //
+    // LocalDate.of(2024, 12, 30).get(WeekFields.ISO.weekBasedYear()) liefert 2025
+    // LocalDate.of(2024, 12, 30).get(WeekFields.ISO.weekOfWeekBasedYear()) liefert 1
+    // da der 30.12.2024 (Mo) schon zur 1.KW des Kalenderjahres 2025 gehört.
+    //
+    // LocalDate.of(2024, 12, 29).get(WeekFields.ISO.weekBasedYear()) liefert 2024
+    // LocalDate.of(2024, 12, 29).get(WeekFields.ISO.weekOfWeekBasedYear()) liefert 52
+    // Der 29.12.2024 (So) gehört noch zum Kalenderjahr 2024, da das Datum zur
+    // 52. KW von 2024 gehört.
+
 
 }
