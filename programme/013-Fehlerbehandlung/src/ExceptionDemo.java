@@ -2,14 +2,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class ExceptionDemo {
 
     public static void main(String[] args) throws IOException {
         //introduction();
         //f();
-        System.out.println(readNumberV3("Welches Jahr haben wir", 3));
+        //System.out.println(readNumberV3("Welches Jahr haben wir", 3));
+//        playLotto();
+//        printEmployeeInfo("   ", 20, "CGA-0123-ab");
     }
 
     private static void introduction() throws IOException {
@@ -163,7 +167,62 @@ public class ExceptionDemo {
     // in aufsteigender Reihenfolge auszugeben auf dem Terminal.
     // Hinweis: Nur die InputMismatchException ist abzufangen! Die restlichen "Fehler" kann man durch if-Abfragen
     // behandeln.
+    public static void playLotto() {
+        int[] numbers = new int[6];
+        int[] sortedNumbers = new int[6];
+        int count = 0;
 
+        while (count < 6) {
+            // Für die readLottoNumbers Methode müssen die eingegebenen Zahlen sortiert sein.
+            sortedNumbers = Arrays.copyOf(numbers, numbers.length);
+            Arrays.sort(sortedNumbers);
+            int n = readLottoNumber(sortedNumbers);
+            // Numbers speichert die Zahlen in ursprünglicher Reihenfolge.
+            numbers[count] = n;
+            count++;
+        }
+        Arrays.sort(numbers);
+        System.out.printf("Deine Lottozahlen: %s\n", Arrays.toString(numbers));
+    }
 
+    private static int readLottoNumber(int[] takenNumbers) {
+        // Hinweis: Wir entscheiden uns hier dazu, den Scanner nicht zu schließen, da wir von System.in lesen.
+        // Würden wir den Scanner schließen, würde auch System.in geschlossen. Dadurch wären aber weitere
+        // Eingaben auf dem Terminal nicht mehr möglich.
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.printf("Gib eine Zahl im Bereich 1-49 ein: ");
+                String input = scanner.nextLine().strip();
+                int number = Integer.parseInt(input);
+                if (number < 1 || number > 49) {
+                    System.out.println("Das ist keine Lottozahl. Bitte wiederholen.");
+                } else if (Arrays.binarySearch(takenNumbers, number) >= 0) {
+                    System.out.println("Du hast diese Zahl schon genannt!");
+                } else {
+                    return number;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Das war keine Zahl. Bitte wiederholen.");
+            }
+        }
+    }
 
+    public static void printEmployeeInfo(String name, int age, String employeeId) {
+        // Die Hilfsmethode requireNonNull aus Klasse Objects prüft, ob ein Parameter den Wert null hat und
+        // löst in diesem Fall eine NullPointerException mit der bereitgestellten Fehlermeldung aus.
+        Objects.requireNonNull(name, "Parameter name darf nicht null sein");
+        Objects.requireNonNull(employeeId, "Parameter employeeId darf nicht null sein");
+        // Weitere Parameter validieren.
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("Der Name ist leer oder besteht nur aus Leerzeichen");
+        }
+        if (age < 0 || age > 120) {
+            throw new IllegalArgumentException("Das Alter muss im Intervall [0, 120] liegen!");
+        }
+        System.out.printf("Name: %s Alter: %d Mitarbeiter-ID: %s\n", name, age, employeeId.toUpperCase());
+    }
 }
+
+
+
