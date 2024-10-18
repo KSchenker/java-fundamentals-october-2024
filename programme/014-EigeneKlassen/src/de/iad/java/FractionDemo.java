@@ -4,14 +4,12 @@ package de.iad.java;
 // Klasse verwenden. Das ist jedoch sehr umständlich und macht den Code teilweise auch unleserlich. Um nur den
 // Namen der Klasse verwenden zu können, müssen wir die Klasse "importieren".
 // Die folgende import-Anweisung erlaubt uns das Symbol MathAlgorithms ohne Package-Präfix im Code zu nutzen.
-import de.iad.java.utils.MathAlgorithms;
 // Eine import static Anweisung erlaubt es uns, ein statisches Feld oder eine statische Methode ohne Klassennamen
 // zu verwenden.
-import static de.iad.java.utils.MathAlgorithms.greatestCommonDivisor;
 // Die folgende import Anweisung ist streng genommen nicht notwendig, da die Klasse Fraction sich im selben Package
 // befindet wie die Klasse FractionDemo.
-import de.iad.java.Fraction;
 
+import static java.lang.System.out;
 
 public class FractionDemo {
 
@@ -55,13 +53,61 @@ public class FractionDemo {
         f.simplify();
         f.print();
 
-        System.out.println(MathAlgorithms.leastCommonMultiple(4, 10)); // 20
-        System.out.println(MathAlgorithms.leastCommonMultiple(-4, 10)); // 20
-        System.out.println(MathAlgorithms.leastCommonMultiple(-4, -10)); // 20
-        System.out.println(MathAlgorithms.leastCommonMultiple(0, -20)); // 0
-        System.out.println(MathAlgorithms.leastCommonMultiple(3, 8)); // 0
-        System.out.println(MathAlgorithms.leastCommonMultiple(8, 8)); // 0
+        Fraction a = new Fraction(3, 4);
+        Fraction b = new Fraction(5, 10);
+        a.add(b);
+        a.print();
 
+        a.negate();
+        a.print();
+        a.negate();
+        a.print();
+
+        a.subtract(new Fraction(32, 16));
+        a.print();
+
+        new Fraction(13, 3).printAsMixedNumber();
+        new Fraction(-13, 3).printAsMixedNumber();
+        new Fraction(-13, -3).printAsMixedNumber();
+        new Fraction(13, -3).printAsMixedNumber();
+        new Fraction(15, -3).printAsMixedNumber();
+        new Fraction(15, 3).printAsMixedNumber();
+
+        Fraction.of(3, new Fraction(1, 3)).print();
+        Fraction.of(3, new Fraction(6, 4)).print();
+        out.println(new Fraction(1, 3).isImproper());
+        out.println(new Fraction(2, 3).isImproper());
+        out.println(new Fraction(3, 3).isImproper());
+        out.println(new Fraction(4, 3).isImproper());
+        out.println(new Fraction(4, 5).toDecimal());
+        out.println(new Fraction(4, 6).toDecimal());
+
+        out.println(Fraction.of(2, 3).compareTo(Fraction.of(4, 2)));
+        out.println(Fraction.of(8, 4).compareTo(Fraction.of(4, 2)));
+        out.println(Fraction.of(8, 4).compareTo(Fraction.of(1, 2)));
+        out.println(Fraction.of(-8, 4).compareTo(Fraction.of(1, 2)));
+
+        out.println(a.toString());
+        out.println(a.hashCode());
+        out.println(a.equals(a));
+
+        Fraction x = Fraction.of(2, 3);
+        Fraction y = Fraction.of(2, 3);
+        out.println(x.equals(y)); // Wenn wir die equals Methode nicht überschreiben, kommt hier false heraus!
+        out.println(x.hashCode());
+        out.println(y.hashCode());
+//        y.invert();
+//        out.println(y.hashCode());
+        out.println(x == y); // false
+        out.println(x.equals(y)); // true
+        out.println(y.equals(x)); // true
+        out.println(x.equals(x)); // true
+        out.println(x.equals("abc")); // false
+
+        out.println(x);
+        out.println(y);
+        y.invert();
+        out.println(y);
     }
 
 }

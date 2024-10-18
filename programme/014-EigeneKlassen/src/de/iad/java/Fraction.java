@@ -19,6 +19,8 @@ package de.iad.java;
 
 import de.iad.java.utils.MathAlgorithms;
 
+import java.util.Objects;
+
 public class Fraction {
 
     // Zustand eines de.iad.java.Fraction-Objekts -> Instanzfelder / Instanzvariablen
@@ -95,6 +97,22 @@ public class Fraction {
         System.out.println();
     }
 
+    void printAsMixedNumber() {
+        // Aufgabe: Wenn ein Bruch eine Zahl > 1 beschreibt, dann soll
+        // der Bruch mit 2 Komponenten ausgegeben werden: Der ganzzahlige
+        // Anteil und der restliche Anteil.
+        // Bsp.: 14 / 3 = 4 und 2/3
+        int wholes = Math.abs(this.nominator / this.denominator);
+        int rest = Math.abs(this.nominator % this.denominator);
+        String sign = this.isNegative() ? "-" : "";
+        if (rest == 0) {
+            System.out.printf("%s%d\n",sign, wholes);
+        } else {
+            System.out.printf("%s%d und %d/%d\n", sign, wholes, rest,
+                    Math.abs(this.denominator));
+        }
+    }
+
     void simplify() {
         // Aufgabe: Bestimme den größten gemeinsamen Teiler von Zähler und Nenner.
         // Dividiere anschließend Zähler und Nenner durch diesen Teiler.
@@ -107,11 +125,25 @@ public class Fraction {
         // Aufgabe: Implementiere die Addition this + fraction.
         // Tipp: Verwende hierfür leastCommonMultiple
         // Hinweis: Grundsätzlich kann man auch das Produkt als gemeinsamen Nenner verwenden.
+        int lcm = MathAlgorithms.leastCommonMultiple(this.denominator, fraction.denominator);
+        int newNominator = this.nominator * (lcm / this.denominator);
+        newNominator += fraction.nominator * (lcm / fraction.denominator);
+        this.nominator = newNominator;
+        this.denominator = lcm;
         this.simplify();
     }
 
-    void subtract(Fraction fraction) {
-        this.simplify();
+    void negate() {
+        // Wechsle das Vorzeichen des Bruchs, indem entweder Zähler oder Nenner
+        // negiert werden.
+        this.denominator *= -1;
+    }
+
+    void subtract(final Fraction fraction) {
+        // Aufgabe: Implementiere die subtract Methode mit Hilfe der add-Methode.
+        Fraction copy = new Fraction(fraction);
+        copy.negate();
+        this.add(copy);
     }
 
     void multiply(Fraction fraction) {
@@ -159,5 +191,92 @@ public class Fraction {
         this.denominator = backup;
     }
 
+    int compareTo(Fraction fraction) {
+        // Aufgabe: Wenn this < fraction, dann muss ein negativer Wert zurückgegeben werden.
+        // Wenn this > fraction, muss ein echt positiver Wert zurückgegeben werden.
+        // Falls this und fraction gleich sind, gib 0 zurück.
+        // Tipp: Nutze Subtraktion und Vorzeichencheck ;-)
+        Fraction copy = new Fraction(fraction);
+        copy.simplify();
+        this.simplify();
+        double diff = this.toDecimal() - fraction.toDecimal();
+        return diff < 0
+                ? -1
+                : diff == 0
+                ? 0
+                : 1;
+    }
 
+    double toDecimal() {
+        return (double)this.nominator / this.denominator;
+    }
+
+    boolean isProper() {
+        // True, falls Zähler kleiner als Nenner (ein "echter Bruch")
+        // Hinweis: Nur Absolutwerte von Zähler und Nenner betrachten.
+        return Math.abs(this.nominator) < Math.abs(this.denominator);
+    }
+
+    boolean isImproper() {
+        // True, falls Zähler >= Nenner. (ein "unechter Bruch")
+        // Hinweis: Betrachte nur Absolutwerte.
+        return Math.abs(this.nominator) >= Math.abs(this.denominator);
+    }
+
+    static Fraction of(int wholes, Fraction fraction) {
+        // Aufgabe: Erstelle ein neues Fraction-Object
+        // bestehend aus den angegebenen Ganzen (wholes) und dem restlichen
+        // Bruchteil (fraction). Also wir sollen aus einer gemischten Zahl
+        // einen herkömmlichen Bruch erstellen.
+        int nominator = wholes * fraction.denominator;
+        nominator += fraction.nominator;
+        return new Fraction(nominator, fraction.denominator);
+    }
+
+    static Fraction of(int nominator, int denominator) {
+        return new Fraction(nominator, denominator);
+    }
+
+    // Wenn eine Klasse eine Methode einer Vorfahren-Klasse überschreiben will,
+    // dann definiert sie die Methode in ihrer eigenen Typdefinition / Rumpf.
+    // Achtung: Zusätzlich sollte man vor die überschriebene Methode die
+    // Annotation @Override angeben. Dadurch prüft der Compiler, dass wir nicht
+    // versehentlich eine neue Methode definieren, statt eine existierende zu überschreiben.
+    @Override
+    public int hashCode() {
+        // Wenn zwei Objekte a und b gleich sind, also wenn a.equals(b) true liefert, dann
+        // muss auch a.hashCode() == b.hashCode() gelten.
+        // Aber: Wenn a.hashCode() == b.hashCode() gilt, dann bedeutet das nicht, dass
+        // unbedingt a.equals(b) == true ist.
+        // Wir schreiben hier keine eigene Hashfunktion, sondern verwenden eine
+        // im JDK bereits implementierte Hashfunktion Objects.hash.
+        // Die hash Funktion bildet einen Hashwert aus dem Zustand dieses Objektes.
+        return Objects.hash(this.nominator, this.denominator);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // Wenn das zu vergleichende Objekt wir selbst sind, dann ist das Ergebnis
+        // selbstverständlich true.
+        if (this == other) return true;
+        // Falls other null ist, können wir keinen Vergleich durchführen. Das Ergebnis ist
+        // also false.
+        if (other == null) return false;
+        // Prüfe, ob die Referenzvariable other auf ein Objekt vom Typ Fraction verweist.
+        if (other instanceof Fraction fraction) {
+            // Wir nutzen unsere bereits implementierte compareTo-Methode. Falls diese 0
+            // liefert, handelt es sich um zwei "gleiche" Objekte.
+            return this.compareTo(fraction) == 0;
+        }
+        // Das zu vergleichende Objekt ist kein Fraction-Objekt, also kann keine Gleichheit
+        // bestehen.
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "%s {nominator=%d, denominator=%d} #%x".formatted(
+          this.getClass().getName(), this.nominator, this.denominator, this.hashCode()
+        );
+    }
 }
