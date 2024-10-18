@@ -23,6 +23,7 @@ public class FractionDemo {
 
         Fraction copyOfF = new Fraction(f);
         copyOfF.print(); // -3 / -8
+        new Fraction(123, -4567).print();
 
     }
 

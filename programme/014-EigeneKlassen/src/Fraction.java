@@ -56,11 +56,31 @@ public class Fraction {
         // der Zähler und der Nenner ist.
         // Tipp: Konvertiere Zähler und Nenner in einen String und lasse dir
         // dann die Länge des Strings geben.
+        System.out.println();
+        // Um die Bruchstrichlänge zu bestimmen, ermittle die Zeichenkettenlängen
+        // des Zählers und Nenners.
+        int positiveNominator = Math.abs(this.nominator);
+        int positiveDenominator = Math.abs(this.denominator);
+        int width = Math.max(
+                String.valueOf(positiveNominator).length(),
+                String.valueOf(positiveDenominator).length()
+        );
 
-        // Das Schlüsselwort this steht für das Objekt, auf dem die Instanzmethode aufgerufen wurde.
-        System.out.printf("%5d\n", this.nominator);
-        System.out.println("-".repeat(5));
-        System.out.printf("%5d\n", this.denominator);
+        // Erstelle den Platzhalter %nd wobei n den Wert von width haben soll.
+        // Nutze dann den Formatstring zur Ausgabe des Zählers.
+        // Hinweis: %% steht für % und %d für einen numerischen Platzhalter.
+        // Hinweis: +2 ist notwendig für die Ausgabe des Vorzeichens vor dem Bruchstrich.
+        String formatString = "%%%dd\n".formatted(width + 2);
+        System.out.printf(formatString, positiveNominator);
+        // Den Bruchstrich geben wir einfach durch Wiederholungen von - an.
+        // Hinweis: %-2s bedeutet: Gib Zeichenkette mit mindestens 2 Zeichen aus.
+        // Falls Zeichen fehlen, fülle mit Leerzeichen auf. Schreibe den String
+        // linksbündig (daher -2 statt nur 2).
+        System.out.printf("%-2s", this.isNegative() ? "-" : "");
+        System.out.println("-".repeat(width));
+        // Ausgabe des Nenners analog zur Ausgabe des Zählers.
+        System.out.printf(formatString, positiveDenominator);
+        System.out.println();
     }
 
     void simplify() {
