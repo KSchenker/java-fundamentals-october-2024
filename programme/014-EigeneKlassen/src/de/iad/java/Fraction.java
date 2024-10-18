@@ -1,3 +1,5 @@
+package de.iad.java;
+
 // Eine Klasse ist ein benutzerdefinierter Referenzdatentyp.
 // Eine Klasse ist ein Bauplan für Objekte.
 // Jedes Objekt hat einen Zustand, ein Verhalten (Handlungskompetenz) und eine Identität.
@@ -17,7 +19,7 @@
 
 public class Fraction {
 
-    // Zustand eines Fraction-Objekts -> Instanzfelder / Instanzvariablen
+    // Zustand eines de.iad.java.Fraction-Objekts -> Instanzfelder / Instanzvariablen
     // Hinweis: Instanzfelder werden automatisch bei Objekterstellung initialisiert und zwar mit
     // den Werten 0 (numerische Felder), false (boolesche Felder), null (Referenzfelder),
     // das Zeichen mit dem Kodierungswert 0 (für char Felder).
@@ -43,6 +45,14 @@ public class Fraction {
         this.denominator = denominator;
     }
 
+    Fraction(int nominator) {
+        // Ein Konstruktor kann einen anderen Konstruktor aufrufen, indem er als
+        // ERSTE Anweisung this als Methodennamen verwendet. Diese Technik nennt
+        // man Konstruktor-Delegation.
+        this(nominator, 1);
+        // Hier könnten noch weitere Initialisierungen vorgenommen werden.
+    }
+
     // Ein Copy-Constructor hat die Aufgabe ein bestehendes Objekt vollständig
     // zu kopieren.
     Fraction(Fraction fraction) {
@@ -50,7 +60,7 @@ public class Fraction {
         this.denominator = fraction.denominator;
     }
 
-    // Verhalten / Handlungskompetenz von Fraction-Objekten -> Instanzmethoden
+    // Verhalten / Handlungskompetenz von de.iad.java.Fraction-Objekten -> Instanzmethoden
     void print() {
         // Aufgabe: Verbessere die Ausgabe, indem du prüfst wie lang jeweils
         // der Zähler und der Nenner ist.
@@ -77,13 +87,15 @@ public class Fraction {
         // Falls Zeichen fehlen, fülle mit Leerzeichen auf. Schreibe den String
         // linksbündig (daher -2 statt nur 2).
         System.out.printf("%-2s", this.isNegative() ? "-" : "");
-        System.out.println("-".repeat(width));
+        System.out.println("─".repeat(width));
         // Ausgabe des Nenners analog zur Ausgabe des Zählers.
         System.out.printf(formatString, positiveDenominator);
         System.out.println();
     }
 
     void simplify() {
+        // Aufgabe: Bestimme den größten gemeinsamen Teiler von Zähler und Nenner.
+        // Dividiere anschließend Zähler und Nenner durch diesen Teiler.
 
     }
 
@@ -101,8 +113,23 @@ public class Fraction {
         this.denominator *= fraction.denominator;
     }
 
-    void divide(Fraction fraction) {
+    void divide(final Fraction fraction) {
+        // Aufgabe: Implementiere die Division von this : fraction.
+        // Die Division lässt sich mit der Multiplikation lösen, in dem man
+        // den zweiten Operanden invertiert (Zähler/Nenner vertauscht)
 
+        // Achtung: Wir müssen den Bruch fraction umdrehen. Um das vom Aufrufer
+        // übergebene Objekt nicht zu verändern, erstellen wir zunächst eine Kopie.
+        // Wir signalisieren dem Aufrufer dieser Methode durch den final Parameter,
+        // dass wir den Objektzustand des Parameters nicht verändern werden.
+        // Hinweis: final bewirkt lediglich, dass wir in Parameter fraction keine
+        // andere Referenz speichern können. Ein nachträgliches Zuweisen ist also nicht
+        // möglich.
+        Fraction factor = new Fraction(fraction);
+        // Nun drehen wir Zähler und Nenner der Kopie um.
+        factor.invert();
+        // Nun multiplizieren wir this mit dem umgedrehten Bruch.
+        this.multiply(factor);
     }
 
     boolean isNegative() {
