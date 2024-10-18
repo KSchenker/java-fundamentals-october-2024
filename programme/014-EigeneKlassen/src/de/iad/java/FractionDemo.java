@@ -1,8 +1,17 @@
 package de.iad.java;
 
-
+// Um eine Klasse aus einem anderen Package zu verwenden, müssten wir im Code den vollqualifizierten Namen der
+// Klasse verwenden. Das ist jedoch sehr umständlich und macht den Code teilweise auch unleserlich. Um nur den
+// Namen der Klasse verwenden zu können, müssen wir die Klasse "importieren".
+// Die folgende import-Anweisung erlaubt uns das Symbol MathAlgorithms ohne Package-Präfix im Code zu nutzen.
 import de.iad.java.utils.MathAlgorithms;
+// Eine import static Anweisung erlaubt es uns, ein statisches Feld oder eine statische Methode ohne Klassennamen
+// zu verwenden.
 import static de.iad.java.utils.MathAlgorithms.greatestCommonDivisor;
+// Die folgende import Anweisung ist streng genommen nicht notwendig, da die Klasse Fraction sich im selben Package
+// befindet wie die Klasse FractionDemo.
+import de.iad.java.Fraction;
+
 
 public class FractionDemo {
 
@@ -10,7 +19,7 @@ public class FractionDemo {
 
         // Mit Operator new erstellen wir ein neues Objekt von Klasse de.iad.java.Fraction und lassen es durch den
         // Konstruktor mit 2 Parametern initialisieren.
-        Fraction half = new Fraction(1, 2);
+        Fraction half = new de.iad.java.Fraction(1, 2);
         half.print();
         System.out.println(half.isNegative()); // false
         Fraction negativeQuarter = new Fraction(-1, 4);
@@ -43,12 +52,15 @@ public class FractionDemo {
         f.divide(new Fraction(4));
         f.print(); // 24 / 64 = 6 / 16 = 3 / 8
 
-        System.out.println(greatestCommonDivisor(24, 64)); // 8
-        System.out.println(MathAlgorithms.greatestCommonDivisor(-12, 4)); // 4
-        System.out.println(MathAlgorithms.greatestCommonDivisor(19, 37)); // 1
-        System.out.println(MathAlgorithms.greatestCommonDivisor(0, 37)); // 37
-        System.out.println(MathAlgorithms.greatestCommonDivisor(37, 0)); // 37
-        System.out.println(MathAlgorithms.greatestCommonDivisor(0, 0)); // 37
+        f.simplify();
+        f.print();
+
+        System.out.println(MathAlgorithms.leastCommonMultiple(4, 10)); // 20
+        System.out.println(MathAlgorithms.leastCommonMultiple(-4, 10)); // 20
+        System.out.println(MathAlgorithms.leastCommonMultiple(-4, -10)); // 20
+        System.out.println(MathAlgorithms.leastCommonMultiple(0, -20)); // 0
+        System.out.println(MathAlgorithms.leastCommonMultiple(3, 8)); // 0
+        System.out.println(MathAlgorithms.leastCommonMultiple(8, 8)); // 0
 
     }
 

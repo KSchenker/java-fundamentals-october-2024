@@ -17,6 +17,8 @@ package de.iad.java;
 // statischen Methoden gilt: Sie brauchen kein Objekt bzw. sind unabhängig von Objekten.
 // Bsp.: Math.PI, Math.E, Math.pow, Math.min
 
+import de.iad.java.utils.MathAlgorithms;
+
 public class Fraction {
 
     // Zustand eines de.iad.java.Fraction-Objekts -> Instanzfelder / Instanzvariablen
@@ -96,21 +98,27 @@ public class Fraction {
     void simplify() {
         // Aufgabe: Bestimme den größten gemeinsamen Teiler von Zähler und Nenner.
         // Dividiere anschließend Zähler und Nenner durch diesen Teiler.
-
+        int gcd = MathAlgorithms.greatestCommonDivisor(this.nominator, this.denominator);
+        this.nominator /= gcd;
+        this.denominator /= gcd;
     }
 
     void add(Fraction fraction) {
-
+        // Aufgabe: Implementiere die Addition this + fraction.
+        // Tipp: Verwende hierfür leastCommonMultiple
+        // Hinweis: Grundsätzlich kann man auch das Produkt als gemeinsamen Nenner verwenden.
+        this.simplify();
     }
 
     void subtract(Fraction fraction) {
-
+        this.simplify();
     }
 
     void multiply(Fraction fraction) {
         // Aufgabe: Multipliziere diesen Bruch (this) mit dem Bruch fraction.
         this.nominator *= fraction.nominator;
         this.denominator *= fraction.denominator;
+        this.simplify();
     }
 
     void divide(final Fraction fraction) {
@@ -130,6 +138,7 @@ public class Fraction {
         factor.invert();
         // Nun multiplizieren wir this mit dem umgedrehten Bruch.
         this.multiply(factor);
+        this.simplify();
     }
 
     boolean isNegative() {
