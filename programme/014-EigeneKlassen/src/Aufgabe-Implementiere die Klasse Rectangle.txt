@@ -1,0 +1,21 @@
+Aufgabe:
+
+- Erstelle ein Java Package mit dem Namen de.iad.geometry
+- in diesem Package soll eine öffentliche Klasse namens Rectangle erstellt werden
+- ein Rectangle-Objekt sollte eine Länge (length) und eine Breite (width) besitzen
+- außerdem hat ein Rectangle-Objekt folgende Methoden:
+    - "ist Quadrat": prüft, ob die Länge gleich der Breite ist
+    - "berechne Fläche": berechnet die Fläche des Rechtecks
+    - "berechne Umfang": berechnet den Umfang des Rechtecks
+    - "ändere Größe": setzt Breite und Länge auf neue Werte
+- implementiere außerdem folgende Konstruktoren:
+    - ein parameterloser Konstruktor, der Länge und Breite auf 1 setzt
+    - ein Konstruktor mit 2 Parametern, der Länge und Breite initialisiert
+    - ein Konstruktor mit 1 Parameter, der Länge und Breite auf denselben Wert setzt
+      (er erstellt also ein Quadrat)
+    - Tipp: Nutze Konstruktor-Delegation (im Konstruktor einen anderen Konstruktor aufrufen)
+- validiere die Parameter in den Methoden und Konstruktoren. Werfe eine IllegalArgumentException
+  falls Werte unstimmig sind.
+- erstelle eine Testklasse namens RectangleDemo im Java Package de.iad.geometry.test und
+  erstelle dort ein Rectangle-Objekt. Prüfe dort die Funktionalität deiner Rectangle-Klasse
+  Tipp: importiere die Rectangle Klasse!
