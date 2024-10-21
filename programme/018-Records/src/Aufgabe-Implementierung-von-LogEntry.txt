@@ -1,0 +1,12 @@
+Implementiere einen Record, der Logeinträge modelliert. Ein Logeintrag besteht aus einem
+
+1) Zeitstempel: LocalDateTime
+2) Meldung (String)
+3) System, von dem der Logeintrag stammt (Origin: String)
+
+Validiere die Parameter:
+- Zeitstempel muss in der Vergangenheit liegen
+- Meldung darf nicht leer sein
+- Origin darf nicht leer sein
+
+Füge eine Methode hinzu, die berechnet, wie alt ein Logeintrag ist. Das Alter soll in Tagen berechnet werden.
