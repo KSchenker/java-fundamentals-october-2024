@@ -19,3 +19,5 @@ Aufgabe:
 - erstelle eine Testklasse namens RectangleDemo im Java Package de.iad.geometry.test und
   erstelle dort ein Rectangle-Objekt. Prüfe dort die Funktionalität deiner Rectangle-Klasse
   Tipp: importiere die Rectangle Klasse!
+- Hinweis: Verwende vorerst den Zugriffsmodifizierer public für alle Mitglieder der Klasse.
+    - Die Mitglieder der Klasse sind alle Methoden, Felder etc.
