@@ -1,0 +1,15 @@
+Implementiere den Record "Contact":
+
+- er hat folgende Felder:
+    - Vorname, Nachname
+    - Wohnadresse
+    - beliebige Telefonnummern
+    - eMail-Adresse
+- er besitzt folgende zusätzliche Methode: print
+
+Implementiere die Wohnadresse als zusätzlichen Record: Address
+
+- Hausnummer
+- Straße
+- Postleitzahl, Ort
+- Land
