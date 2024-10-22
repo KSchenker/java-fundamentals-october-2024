@@ -1,5 +1,6 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 public class SetDemo {
 
@@ -67,6 +68,44 @@ public class SetDemo {
         System.out.println(nonCommonMembers); // [bob, damian, alice, elon, fred]
 
         // Aufgabe: Konvertiere die Set nonCommonMembers in einen Array von Strings.
+        String[] membersAsArray = nonCommonMembers.toArray(new String[]{});
+        System.out.println(Arrays.toString(membersAsArray));
+
+        int[] numberArray = {1, 2, 3};
+        // Die statische Set.of Methode kann neue Set-Objekte aus vorgegebenen Elementen erstellen.
+        // Das Ergebnis von Set.of ist ein Set-Objekt, welches unveränderlich ist. Da wir
+        // eine veränderliche Set haben wollen, erstellen wir mittels new eine eigene Set
+        // und initialisieren diese mit der unveränderlichen Set.
+        Set<Integer> numberSet = new TreeSet<>(Set.of(5,3,2,4));
+        numberSet.addAll(Set.of(7, 9, 0));
+        System.out.println(numberSet);
+        // Set.of(2, 3, 4).add(7); // Fehler: Set.of liefert nur eine unveränderliche Set!
+
+        // Um diese Collection in ein int[] zu konvertieren, können wir nicht direkt
+        // toArray nutzen, da wir damit nur Integer[] erhalten würden.
+        Integer[] numberSetAsArray = numberSet.toArray(new Integer[]{});
+        int[] arrayOfNumbers = new int[numberSet.size()];
+        for (int i = 0; i < arrayOfNumbers.length; i++) {
+            arrayOfNumbers[i] = numberSetAsArray[i].intValue();
+        }
+        System.out.println(Arrays.toString(arrayOfNumbers));
+
+        // Obige Variante liese sich auch mit Hilfe der Java Stream API umsetzen.
+        int[] someNumbers = Arrays.stream(numberSetAsArray).mapToInt(Integer::intValue).toArray();
+
+        // Obige Variante liese sich auch mit Hilfe einer Zusatzbibliothek umsetzen.
+        // Wir verwenden hier die Bibliothek org.apache.commons.lang
+        int[] myNumbers = ArrayUtils.toPrimitive(numberSetAsArray);
+
+        List<Integer> orderedNumbers = new ArrayList<>();
+        orderedNumbers.addAll(List.of(5, 1, 2, 5, 3, 4, 5));
+        System.out.println(orderedNumbers); // [5, 1, 2, 5, 3, 4, 5]
+        // Liste in Set umwandeln (und dabei Duplikate entfernen)
+        Set<Integer> uniqueNumbers = new HashSet<>(orderedNumbers);
+        System.out.println(uniqueNumbers); // [1, 2, 3, 4, 5]
+        // Eine Set in eine Liste konvertieren.
+        orderedNumbers = new ArrayList<>(uniqueNumbers);
+        System.out.println(orderedNumbers); // [1,2,3,4,5]
 
     }
 }
