@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ListDemo {
@@ -195,6 +196,74 @@ public class ListDemo {
         Collections.sort(employees);
         System.out.println(employees); // ["Austin, Elon", "Brown, Charlie", "Duff, Damian", "Mustermann, Max"]
 
+        // Wir verwenden einen anderen Comparator um die Sortierreihenfolge zu ändern.
+//        Comparator<Name> comparator = new Name.FirstNameOrder();
+        Collections.sort(employees, Name.FIRST_NAME_ORDER);
+        System.out.println(employees); // ["Brown, Charlie", "Duff, Damian", "Austin, Elon", "Mustermann, Max"]
+
+        List<String> months = new ArrayList<>(List.of("Januar", "März", "februar"));
+        // Die Klasse String hat ein öffentliches statisches Feld namens CASE_INSENSITIVE_ORDER. Dieses Feld
+        // referenziert ein Comparator-Objekt welches Zeichenketten ohne Berücksichtigung der Groß- und Kleinschreibung
+        // vergleicht.
+        Collections.sort(months, String.CASE_INSENSITIVE_ORDER);
+        System.out.println(months); // ["februar", "Januar", "März"]
+        Collections.sort(months);
+        System.out.println(months); // ["Januar", "März", "februar"]
+
+        // Aufgabe: Der Record LogEntry (siehe im voherigen Projekt) soll die Schnittstelle Comparable<LogEntry>
+        // implementieren. Die Reihenfolge soll anhand des Zeitstempels (timestamp) bestimmt werden.
+        // Erstelle anschließend eine Liste von LogEntry Objekten und sortiere sie aufsteigend.
+        // Im Anschluss sollst du eine Comparator Klasse schreiben, die LogEntry Objekte vergleicht.
+        // Hier soll anhand des Origin (Herkunft) sortiert werden. Teste deinen Comparator mit der Collections.sort
+        // Methode.
+        LocalDateTime now = LocalDateTime.now();
+        List<LogEntry> entries = new ArrayList<>(List.of(
+                new LogEntry(now.minusDays(2), "Festplatte voll", "Dateisystem"),
+                new LogEntry(now.minusDays(1), "Virus erkannt", "Virenscanner"),
+                new LogEntry(now.minusDays(5), "Internetverbindung unterbrochen", "Netzwerk")
+        ));
+        Collections.sort(entries);
+        System.out.println(entries);
+        Collections.sort(entries, LogEntry.ORIGIN_ORDER); // Sortiere aufsteigend nach Origin
+        System.out.println(entries);
+
+        // Statt einer geschachtelten Comparator-Klasse könnte man auch eine anonyme Klasse in Java verwenden.
+        // Da eine anonyme Klasse keinen Namen besitzt, kann sie nicht mehrfach verwendet werden.
+        Comparator<LogEntry> messageOrder = new Comparator<LogEntry>() {
+            @Override
+            public int compare(LogEntry first, LogEntry second) {
+                return first.message().compareToIgnoreCase(second.message());
+            }
+        };
+        Collections.sort(entries, messageOrder); // sortiere aufsteigend nach der Message
+        System.out.println(entries);
+
+        // Statt eines anonymen Datentyps wie oben, können wir auch eine sogenannte Lambda-Funktion verwenden.
+        // Die Lambda-Funktion muss dieselbe Signatur haben wie die compare Methode aus der Schnittstelle Comparable.
+        // Wir sortieren die Einträge nach Message, aber diesmal absteigend. Wir erreichen das, indem wir
+        // beim Vergleich von first und second die Operanden umdrehen, also in Wahrheit second mit first vergleichen.
+        Comparator<LogEntry> comparator = (first, second) -> second.message().compareToIgnoreCase(first.message());
+        Collections.sort(entries, comparator);
+        System.out.println(entries);
+        Collections.sort(entries, comparator.reversed()); // sortiere aufsteigend nach Message (umgekehrte Variante des Comparators)
+        System.out.println(entries);
+
+        // Was ist eine Lambda-Funktion? Darunter versteht man eine anonyme Methode, die syntaktisch sehr kompakt
+        // im Code formuliert werden kann. Da sie keinen Namen besitzt, kann man sie nicht direkt wiederverwenden.
+        // Eine Lambda-Funktion kann überall dort verwenden werden, wo ein Objekt eines Interface-Typs erwartet wird.
+        // Voraussetzung ist, dass das Interface genau eine abstrakte Methode besitzt (default Methoden werden hier
+        // nicht mit betrachtet).
+
+        System.out.println(employees); // ["Brown, Charlie", "Duff, Damian", "Austin, Elon", "Mustermann, Max"]
+        employees.add(new Name("Zach", "Brown"));
+        employees.add(new Name("Claire", "Redfield"));
+        employees.add(new Name("Chris", "Redfield"));
+        Comparator<Name> orderByLast = (first, second) -> first.lastName().compareToIgnoreCase(second.lastName());
+        Comparator<Name> orderByFirst = (first, second) -> first.firstName().compareToIgnoreCase(second.firstName());
+        // Comparator-Objekte lassen sich auch zu einem Comparator zusammensetzen. Zuerst wird hier nach
+        // Nachnamen sortiert. Falls zwei Nachnamen aber gleich sind, wird anschließend nach Vornamen sortiert.
+        Collections.sort(employees, orderByLast.thenComparing(orderByFirst));
+        System.out.println(employees);
 
     }
 

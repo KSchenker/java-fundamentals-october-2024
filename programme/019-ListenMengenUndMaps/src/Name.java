@@ -1,6 +1,12 @@
 import java.util.Comparator;
 
 public record Name(String firstName, String lastName) implements Comparable<Name> {
+
+    // Ein statisches, finales Feld, dass eine Referenz auf ein Comparator-Objekt speichert.
+    // Immer dann, wenn man Name-Objekte anhand des Vornamens sortieren möchte, kann man dieses
+    // Feld nutzen.
+    public static final Comparator<Name> FIRST_NAME_ORDER = new FirstNameOrder();
+
     @Override
     public String toString() {
         return "%s, %s".formatted(lastName, firstName);
@@ -21,7 +27,7 @@ public record Name(String firstName, String lastName) implements Comparable<Name
 
     // Diese geschachtelte Klasse dient als Comparator für Name-Objekte. Sie sortiert Name-Objekte aufsteigend
     // anhand ihrer Vornamen.
-    public class FirstNameOrder implements Comparator<Name> {
+    static public class FirstNameOrder implements Comparator<Name> {
         @Override
         public int compare(Name first, Name second) {
             // Hier wird dieselbe Konvention wie bei compareTo verwendet. Negativer Rückgabewert bedeutet,

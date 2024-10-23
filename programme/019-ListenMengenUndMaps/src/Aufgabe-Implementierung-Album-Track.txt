@@ -1,0 +1,41 @@
+Es sind zwei Klassen namens Album und Track zu implementieren. Track darf gerne als Record programmiert werden.
+
+Ein Album hat folgende Felder / Attribute / Eigenschaften:
+
+- ein Genre (String)
+- ein Erscheinungsdatum (LocalDate)
+- einen Künstler (String)
+- einen Titel (String)
+- eine Liste von Track-Objekten
+
+Diese Felder sind als private zu deklarieren!
+
+Ein Album hat darüber hinaus folgende Methoden:
+
+- Anzahl der Tracks im Album
+- Hinzufügen eines Tracks
+- Gesamtdauer des Albums (Summe der Dauer aller Tracks im Album)
+- Methoden, um die private Felder zu lesen (z.B. getGenre, getPublicationDate, getTracks)
+- Methoden, um den Künstler, das Erscheinungsdatum, den Titel und das Genre zu modifizieren (die Trackliste wird indirekt durch
+  die Methode "Hinzufügen eines Tracks" verändert)
+
+Folgende Methoden sind zu überschreiben:
+
+- Methode toString: Hier sollen alle Angaben des Albums ausgegeben werden, inklusive aller Tracks des Albums
+
+Ein Track hat folgende Felder:
+
+- Dauer
+- Titel
+
+Ein Track hat folgende Methoden:
+
+- Dauer in Sekunden
+
+Folgende Methoden sind zu überschreiben:
+
+- Methode toString: Ausgabe des Titels und der Dauer in einem kompakten Format
+
+Schreibe ein Programm, das ein Album mit ein paar Tracks erstellt. Teste deine Methoden.
+Anschließend sollen die Tracks des Albums absteigend nach Dauer sortiert und ausgegeben werden. Verwende hier
+einen Comparator in Form einer Lambda-Funktion.
