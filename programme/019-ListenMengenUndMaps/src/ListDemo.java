@@ -107,6 +107,95 @@ public class ListDemo {
         attendants.add(new Name("Alice", "Wonderland"));
         attendants.add(new Name("Bob", "Ross"));
         printCollectionInfo(attendants);
+
+        // Die Elemente der Liste mit einem Iterator durchlaufen.
+        for (Iterator<Name> it = attendants.iterator(); it.hasNext(); ) {
+            Name nextElement = it.next();
+            System.out.println(nextElement);
+            if (nextElement.lastName().length() > 4) {
+                it.remove(); // Lösche zuletzt gelesenes Element aus der Liste.
+            }
+        }
+        System.out.println(attendants); // ["Doe, John", "Ross, Bob"]
+
+        // Elemente während des Iterierens zu löschen, geht meist schief. Verwende stattdessen einen Iterator.
+        attendants = new LinkedList<>();
+        attendants.addAll(List.of(
+                new Name("John", "Doe"),
+                new Name("Max", "Mustermann"),
+                new Name("Alice", "Wonderland"),
+                new Name("Bob", "Ross")
+        ));
+        for (int i = 0; i < attendants.size(); ++i) {
+            Name nextElement = attendants.get(i);
+            System.out.println(nextElement);
+            if (nextElement.lastName().length() > 4) {
+                attendants.remove(i);
+                i--; // Wir müssen den Index händisch zurücksetzen, da ansonsten das erste "nachgerutschte" Element
+                     // nicht geprüft würde.
+            }
+        }
+        System.out.println(attendants);
+
+        // Listen haben einen erweiterten Iterator, den sogenannten ListIterator. Dieser kann positioniert werden
+        // und in beide Richtungen (vorwärts, rückwärts) die Liste durchlaufen.
+        List<Integer> numbers = new LinkedList<>();
+        numbers.addAll(List.of(10, 20, 30, 40, 50, 60, 70));
+        // Beginne die Iteration an Stelle 3, also zwischen Element 30 und 40.
+        // Bewege dich anschließend in Rückwärtsrichtung mit den Methoden previous und hasPrevious.
+        // ListIteratoren können Elemente entfernen und auch einfügen.
+        for (ListIterator<Integer> it = numbers.listIterator(3); it.hasPrevious(); ) {
+            it.add(99); // Füge vor dem Iterator das Element 99 ein. Dadurch wandert der Iterator um eine Stelle nach rechts.
+            it.previous(); // Lasse den Iterator eine Stelle nach links wandern und "verschlucke" die 99.
+            System.out.print(it.previous() + "  ");
+        }
+        System.out.println(numbers);
+
+        // Aufgabe: Durchlaufe die Elemente einer String-Liste in Rückwärtsrichtung. Nutze dafür einen
+        // ListIterator<String>.
+        List<String> words = new ArrayList<>(List.of("java", "ist", "mega", "toll"));
+        for (ListIterator<String> it = words.listIterator(words.size()); it.hasPrevious(); ) {
+            System.out.printf("%s ", it.previous());
+        }
+
+        // Die Methode subList erstellt eine sogenannte View (Sicht) auf die darunterliegende Liste.
+        // Mit subList sehen wir also nur einen Ausschnitt der Originalliste.
+        // Wichtig: Alle Modifikationen an der View wirken sich auch auf das Original aus.
+        // WIr können damit Teilbereiche der Liste entfernen, einfügen, verändern etc.
+        System.out.println(words.subList(1, words.size())); // ["ist", "mega", "toll"]
+        System.out.println(words.subList(1, 3)); // ["ist", "mega"]
+        words.subList(1, 3).clear(); // Entfernt die Worte "ist" und "mega" aus der Originalliste!!!
+        System.out.println(words); // ["java", "toll"]
+        words.subList(1, 1).addAll(List.of("ist", "C#"));
+        System.out.println(words); // ["java", "ist", "C#", "toll"]
+        Collections.sort(words.subList(1, words.size())); // Sortiere die letzten 3 Elemente aus vorheriger Liste
+        System.out.println(words); // ["java", "C#", "ist", "toll"]
+
+        // Die Collections.sort Methode kann Listen aufsteigend sortieren. Sie verwendet standardmäßig die
+        // natürliche Ordnung des Elementdatentyps. Wenn wir einen benutzerdefinierten Datentyp für die Elemente der
+        // Liste verwenden, haben für die Sortierung folgende Möglichkeiten:
+        // 1) Wir implementieren die Schnittstelle Comparable im benutzerdefinierten Datentyp
+        // 2) Wir erstellen ein Comparator-Objekt und geben es der sort-Methode mit. Ein Comparator ist ein Objekt
+        //    dass die Aufgabe hat, andere Objekte zu vergleichen (<, >, ==)
+        Name max = new Name("Max", "Mustermann");
+        Name charlie = new Name("Charlie", "Brown");
+        Name adam = new Name("Adam", "Brown");
+
+        System.out.println(max.compareTo(charlie)); // max > charlie, da Mustermann > Brown, also return > 0
+        System.out.println(charlie.compareTo(max)); // charlie < max, da Brown < Mustermann, also return < 0
+        System.out.println(charlie.compareTo(charlie)); // charlie == charlie, da Brown == Brown, also return == 0
+        System.out.println(charlie.compareTo(adam)); // charlie > adam, da Charlie > Adam, also return > 0
+        System.out.println(adam.compareTo(charlie)); // adam < charlie, da Adam < Charlie, also return < 0
+
+        List<Name> employees = new ArrayList<>();
+        employees.add(max);
+        employees.add(new Name("Charlie", "Brown"));
+        employees.add(new Name("Damian", "Duff"));
+        employees.add(new Name("Elon", "Austin"));
+        Collections.sort(employees);
+        System.out.println(employees); // ["Austin, Elon", "Brown, Charlie", "Duff, Damian", "Mustermann, Max"]
+
+
     }
 
     // Eine generische Methode, die die Elemente einer Collection und zusätzliche Infos ausgibt.
