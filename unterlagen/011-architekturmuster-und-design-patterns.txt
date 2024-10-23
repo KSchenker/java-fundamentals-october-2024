@@ -9,14 +9,24 @@ Model-ViewModel-View (MVVM)
 
 Design Patterns (Bewährte Lösungen für immer wiederkehrende Probleme in der objektorientierten Programmierung):
 
-- Observer Pattern
-- Abstract Factory
-- Proxy
-- State
-- Decorator
-- Singleton
+- Observer Pattern 	(Sergej)
+- Abstract Factory	(Uwe)
+- Proxy 		(Gian, Christopher)
+- State 		(Sophie, Jan)
+- Decorator		(Emina)	
+- Singleton		(Merve)
 - Factory Method
-- Builder
-- Strategy
+- Builder		(Mykola)
+- Strategy		(David)
+- Template Method	(Tobias)
+- Visitor		(Mehmet)
+
+Vortrag besteht aus folgenden Bestandteilen:
+- Recherche
+- Erklärung des Musters
+- Beispielimplementierung in Java
+- Klassendiagramm
+- Handout mit Key Points (Vorderseite A4)
+
 
  
