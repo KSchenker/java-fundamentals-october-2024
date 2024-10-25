@@ -8,13 +8,13 @@ import state.example.ui.Player;
  * This interface is used for all the methods and functions.
  */
 public abstract class State {
-    Player player;
+    protected Player player;
 
     /**
      * Context passes itself through the state constructor. This may help a
      * state to fetch some useful context data if needed.
      */
-    State(Player player) {
+    protected State(Player player) {
         this.player = player;
     }
 

@@ -28,7 +28,11 @@ public class BeispielmitStrategy {
         }
     } // Beide Klassen spezifizieren, wie sie die Zahlung abwickeln, haben aber keine Verbindung zur Klasse,
       // die diese Strategie verwendet
-
+    public class ApplePay implements PaymentStrategy {
+        public void pay(int ammount) {
+            System.out.println("ApplePayment bezahlen" + ammount);
+        }
+    }
     // Und dann die Verwendung des Strategien (Context-Klasse)
     // Die ShoppingCart-Klasse fungiert als "Context" und nutzt eine PaymentStrategy, um die Zahlungsweise zu bestimmen.
     public class ShoppingCard {
@@ -48,7 +52,6 @@ public class BeispielmitStrategy {
     }  // Das bedeutet, dass ShoppingCart die Details der spezifischen Bezahlmethode nicht kennt und nicht kennen muss
        // sie kennt nur das PaymentStrategy Interface. Dies fördert die Flexibilität und Wiederverwendbarkeit des Codes.
 }
-
 // Das Strategy Pattern erlaubt es, eine Methode flexibel zu wechseln, ohne die eigentliche ShoppingCart-Klasse zu
 // ändern. So kann man leicht neue Bezahlmethoden hinzufügen (z. B. googlePay, o.ä.), indem man eine neue Klasse
 // schreibt, die PaymentStrategy implementiert. ShoppingCart bleibt davon unberührt,
